@@ -1,13 +1,12 @@
 import { HeroSection } from "@/components/landing/hero-section";
 import { BenefitsSection } from "@/components/landing/benefits-section";
-import { WhySection } from "@/components/landing/why-section";
 import { HowItWorksSection } from "@/components/landing/how-it-works-section";
 import { FounderSection } from "@/components/landing/founder-section";
 import { SimulatorSection } from "@/components/landing/simulator-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
+import { TrustSection } from "@/components/landing/trust-section";
 import { FaqSection } from "@/components/landing/faq-section";
 import { CtaSection } from "@/components/landing/cta-section";
-import { DecorativeElements } from "./components/landing/decorative-elements";
 import { HighlightsSection } from "@/components/landing/highlights-section";
 import BlogSection from "@/components/landing/blog-section";
 
@@ -20,19 +19,19 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
-      <HeroSection />
-      <HighlightsSection />
-      <BenefitsSection />
-      <SimulatorSection />
-      <HowItWorksSection />
-      {/* <WhySection /> */}
-      <FounderSection />
+      <div className="m-0 p-0 overflow-hidden">
+        <HeroSection />
+        <BenefitsSection />
+        <SimulatorSection />
+        <HowItWorksSection />
+        <TrustSection />
+        <TestimonialsSection />
+        <FounderSection />
+      </div>
       <FaqSection />
-      <TestimonialsSection />
+      <HighlightsSection />
       <BlogSection />
       <CtaSection />
-
-      <DecorativeElements />
     </main>
   );
 }

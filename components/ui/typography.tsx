@@ -72,19 +72,19 @@ export function Typography({
       case "base":
         return "text-base";
       case "lg":
-        return "text-lg";
+        return "text-base sm:text-lg";
       case "xl":
-        return "text-lg sm:text-xl";
+        return "text-lg md:text-xl";
       case "2xl":
-        return "text-xl sm:text-2xl";
+        return "text-xl md:text-2xl";
       case "3xl":
-        return "text-xl sm:text-3xl";
+        return "text-xl sm:text-2xl md:text-3xl";
       case "4xl":
-        return "text-2xl sm:text-4xl";
+        return "text-2xl sm:text-3xl md:text-4xl";
       case "5xl":
-        return "text-3xl sm:text-5xl";
+        return "text-3xl sm:text-4xl md:text-5xl";
       case "6xl":
-        return "text-4xl sm:text-6xl";
+        return "text-3xl sm:text-5xl md:text-6xl";
       default:
         return "text-base";
     }

@@ -59,7 +59,7 @@ export function FaqSection() {
           className="-top-40 left-[50%] -translate-x-[50%]"
           color="blue"
           size="lg"
-          zIndex="-z-0 opacity-30"
+          zIndex="z-0 opacity-30"
         />
       </div>
 
@@ -99,10 +99,10 @@ export function FaqSection() {
                     value={`item-${index}`}
                     className="border-gray-700 cursor-pointer"
                   >
-                    <AccordionTrigger className="text-2xl font-medium cursor-pointer">
+                    <AccordionTrigger className="text-xl sm:text-2xl font-medium cursor-pointer">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-gray-300 text-lg font-normal mb-4">
+                    <AccordionContent className="text-gray-300 text-base sm:text-lg font-normal mb-4">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -118,7 +118,7 @@ export function FaqSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <div className="bg-blue-50 rounded-2xl p-8 text-black">
+                <div className="bg-blue-50 rounded-3xl p-8 text-black">
                   <div className="flex flex-col items-center text-center space-y-6">
                     <span className="rounded-full p-4 text-3xl border-2 text-blue-600 bg-blue-200 border-blue-400">
                       <PiHeadsetDuotone />
@@ -127,7 +127,7 @@ export function FaqSection() {
                     <Typography
                       as="h3"
                       variant="3xl"
-                      weight="medium"
+                      weight="semibold"
                       className="mb-2"
                     >
                       Besoin de précisions avant d'investir ?

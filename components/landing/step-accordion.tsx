@@ -40,7 +40,7 @@ export function StepAccordion({
       <AccordionTrigger className="hover:no-underline cursor-pointer">
         <div className="flex items-center gap-4">
           <span
-            className={`rounded-full p-3 text-2xl border-2 ${iconColorClasses[color]}`}
+            className={`rounded-full p-2 sm:p-3 text-xl sm:text-2xl border-2 ${iconColorClasses[color]}`}
           >
             {icon}
           </span>

@@ -10,7 +10,7 @@ import { formatDate } from "@/lib/utils";
 export function BlogCard({ article }: { article: BlogArticle }) {
   return (
     <Link
-      href={`/realisations/${article.slug}`}
+      href={`/blog/${article.slug}`}
       className="group cursor-pointer bg-white border-2 border-white w-full rounded-4xl overflow-hidden"
     >
       <div className="flex flex-col w-full h-full">

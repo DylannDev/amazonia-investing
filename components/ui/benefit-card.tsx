@@ -1,6 +1,5 @@
 "use client";
 
-import { ReactNode } from "react";
 import { FloatingCoins } from "./floating-coins";
 import { ArrowButton } from "./arrow-button";
 import { Card } from "./card";
@@ -8,15 +7,14 @@ import { Card } from "./card";
 type CardColor = "blue" | "green" | "red" | "yellow";
 
 interface BenefitCardProps {
-  icon: ReactNode;
   investment: number;
   monthlyReturn: number;
   yearlyReturn: number;
   threeYearReturn: number;
   color: CardColor;
   image: string;
-  size: number;
   index?: number;
+  imgSize: string;
 }
 
 const colorClasses: Record<CardColor, string> = {
@@ -27,26 +25,28 @@ const colorClasses: Record<CardColor, string> = {
 };
 
 export function BenefitCard({
-  icon,
   investment,
   monthlyReturn,
   yearlyReturn,
   threeYearReturn,
   color,
   image,
-  size,
   index = 0,
+  imgSize,
 }: BenefitCardProps) {
   return (
-    <Card index={index}>
+    <Card
+      index={index}
+      className={`${
+        index === 2 ? "col-span-1 md:col-span-2 lg:col-span-1" : ""
+      }`}
+    >
       <div className="pt-2 mb-4 flex flex-col items-center justify-center gap-2">
         <div className="relative w-full h-[75px] flex justify-center mb-4">
           <FloatingCoins
             src={image}
-            alt="Icone pièce Amazonia Investing"
-            className="top-[50%] translate-y-[-50%]"
+            className={`top-[50%] translate-y-[-50%] ${imgSize}`}
             delay={0}
-            size={size}
           />
         </div>
         <div className="text-4xl font-bold">{investment}€</div>

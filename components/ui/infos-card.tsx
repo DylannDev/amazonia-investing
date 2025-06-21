@@ -4,21 +4,30 @@ import Image from "next/image";
 
 interface InfoCardProps {
   image: string;
+  className?: string;
+  priority?: boolean;
+  fetchPriority?: "high" | "low" | "auto";
 }
 
-const InfoCard: React.FC<InfoCardProps> = ({ image }) => {
+const InfoCard: React.FC<InfoCardProps> = ({
+  image,
+  className = "bottom-16 -left-19",
+  priority = true,
+  fetchPriority = "high",
+}) => {
   return (
-    <FloatingCard className=" bg-white/70 border-2 border-white backdrop-blur-sm absolute bottom-16 -left-19 rounded-2xl shadow-[0_0_20px_0_rgba(0,0,0,0.15)]">
-      <div className="relative w-full">
+    <FloatingCard
+      className={`absolute p-3 sm:p-5 bg-white/70 backdrop-blur-sm border-2 border-white rounded-2xl shadow-[0_0_20px_0_rgba(0,0,0,0.15)] ${className}`}
+    >
+      <div className="relative w-full h-full">
         <Image
           src={image}
           alt="Informations gains et bénéfices du produit Amazonia Investing"
-          height={116}
-          width={270}
-          quality={100}
-          className="object-cover object-bottom rounded-4xl"
-          priority
-          fetchPriority="high"
+          fill
+          sizes="100%"
+          className="object-contain"
+          priority={priority}
+          fetchPriority={fetchPriority}
         />
       </div>
     </FloatingCard>

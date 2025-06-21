@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Urbanist } from "next/font/google";
 import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
+import { WhatsappStickyButton } from "@/components/ui/whatsapp-sticky-button";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -22,10 +23,10 @@ export const metadata: Metadata = {
   title: {
     template: "%s | Amazonia Investing",
     default:
-      "Amazonia Investing - Investissement Unique, Revenus Mensuels à Vie",
+      "Amazonia Investing - Investissement unique, Revenu passif mensuel à vie",
   },
   description:
-    "Investissez une seule fois à partir de 150€ et percevez jusqu'à 17,5% de rendement mensuel à vie. Gestion 100% déléguée par un trader professionnel.",
+    "Investissement dès 150€. Recevez un revenu passif mensuel jusqu’à 17,5%. Placement rentable, rendement élevé, gestion 100% déléguée.",
   keywords: [
     "investissement",
     "revenus mensuels",
@@ -43,12 +44,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className="scroll-smooth">
-      <body
-        className={`${outfit.variable} font-outfit antialiased overflow-x-hidden`}
-      >
+      <body className={`${outfit.variable} font-outfit antialiased`}>
         <Navbar />
         <div className="min-h-screen pt-16">{children}</div>
         <Footer />
+        <WhatsappStickyButton />
       </body>
     </html>
   );

@@ -109,9 +109,6 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply text-black bg-white;
-  }
 }
 
 @layer utilities {
@@ -124,4 +121,75 @@
     @apply ml-[-41px];
     content: counter(step);
   }
+}
+
+.rich-text {
+  h2 {
+    @apply text-[32px] sm:text-[50px] leading-tight font-semibold text-black my-8;
+  }
+
+  h3 {
+    @apply text-[24px] sm:text-[34px] leading-tight font-semibold text-black mb-4 mt-12;
+  }
+
+  h4 {
+    @apply text-[22px] sm:text-[28px] leading-tight font-semibold text-black mb-2 mt-6;
+  }
+
+  p {
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    margin-bottom: 0.75rem;
+    padding-left: 1rem;
+    @apply list-disc list-inside space-y-1;
+  }
+
+  strong {
+    @apply font-semibold;
+  }
+
+  /* Styles pour les tableaux */
+  table {
+    @apply w-full my-8 rounded-xl overflow-hidden bg-white;
+  }
+
+  thead {
+    @apply bg-black text-white;
+  }
+
+  th {
+    @apply px-4 py-5 text-left text-white font-semibold text-sm sm:text-lg;
+  }
+
+  tbody tr {
+    @apply hover:bg-blue-50 transition-colors duration-200;
+  }
+
+  tbody tr:nth-child(even) {
+    @apply bg-white;
+  }
+
+  tbody tr:nth-child(odd) {
+    @apply bg-blue-50;
+  }
+
+  td {
+    @apply px-4 py-5 text-sm sm:text-base;
+  }
+
+  /* Responsive pour les tableaux */
+  @media (max-width: 640px) {
+    table {
+      @apply text-xs;
+    }
+
+    th,
+    td {
+      @apply px-2 py-2;
+    }
+  }
+
+  @apply text-base sm:text-lg text-gray-600 leading-relaxed font-normal;
 }

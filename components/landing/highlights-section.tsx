@@ -39,7 +39,7 @@ export function HighlightsSection() {
         />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Grille de cartes */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {highlights.map((highlight, index) => (
               <HighlightCard
                 key={index}
@@ -53,10 +53,10 @@ export function HighlightsSection() {
           {/* Image à droite */}
           <div className="relative w-full h-full aspect-[4/3] rounded-4xl overflow-hidden">
             <Image
-              src="/client-1.jpg"
-              alt="Investisseur satisfait Amazonia Investing"
+              src="/happy-trader.jpg"
+              alt="Trader professionnel célébrant ses résultats positifs en trading - Amazonia Investing"
               fill
-              className="object-cover"
+              className="object-cover object-right"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />

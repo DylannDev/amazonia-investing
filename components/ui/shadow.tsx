@@ -16,9 +16,9 @@ const shadowVariants = {
     black: "bg-gradient-to-b from-black to-white",
   },
   size: {
-    sm: "h-[400px] w-[400px]",
-    md: "h-[500px] w-[500px]",
-    lg: "h-[600px] w-[600px]",
+    sm: "h-[200px] w-[200px] sm:h-[400px] sm:w-[400px]",
+    md: "h-[300px] w-[300px] sm:h-[500px] sm:w-[500px]",
+    lg: "h-[400px] w-[400px] sm:h-[600px] sm:w-[600px]",
   },
 };
 
@@ -31,7 +31,7 @@ export function Shadow({
   return (
     <div
       className={cn(
-        "absolute rounded-full opacity-50 blur-[150px]",
+        "absolute rounded-full opacity-50 blur-[80px] sm:blur-[150px]",
         shadowVariants.color[color],
         shadowVariants.size[size],
         className,

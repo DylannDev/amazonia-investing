@@ -5,9 +5,9 @@ import { Shadow } from "../ui/shadow";
 
 export function CtaSection() {
   return (
-    <section className="pt-20 sm:pt-32 -mb-48 bg-black">
-      <div className="container max-w-[96rem] mx-auto px-4">
-        <div className="text-center bg-white border-2 border-white rounded-3xl p-12 relative z-50 overflow-hidden">
+    <section className="pt-20 sm:pt-32 pb-0 bg-black border-y border-black">
+      <div className="container mx-auto px-4">
+        <div className="text-center bg-white border-2 border-white rounded-3xl px-6 py-12 sm:p-12 relative z-50 overflow-hidden">
           <SectionHeader
             title="Recevez vos premiers revenus dès ce mois-ci"
             description="Rejoignez les investisseurs qui perçoivent déjà un revenu mensuel régulier grâce à Amazonia Investing. Notre équipe vous guide pas à pas, de l’investissement à la première rente."
@@ -16,25 +16,25 @@ export function CtaSection() {
           <CallButton variant="blue" />
           <div className="absolute inset-0 pointer-events-none rounded-3xl">
             <Shadow
-              className="-top-40 -right-20 opacity-80"
+              className="-top-10 sm:-top-40 -right-10 sm:-right-20 opacity-80"
               color="blue"
               size="sm"
               zIndex="-z-2"
             />
             <Shadow
-              className="-bottom-60 -left-50 opacity-80"
+              className="-bottom-20 sm:-bottom-60 -left-30 sm:-left-50 opacity-80"
               color="blue"
               size="sm"
               zIndex="-z-2"
             />
           </div>
-          <div className="absolute -top-20 -right-20 -z-1 w-[400px] h-full rotate-6">
+          <div className="absolute -top-10 sm:-top-20 -right-10 sm:-right-20 -z-1 w-[200px] sm:w-[300px] h-full rotate-6">
             <Image
               src="/shapes-small.svg"
               alt=""
-              width={400}
-              height={400}
-              className="absolute w-[400px] h-[400px] object-contain"
+              width={300}
+              height={300}
+              className="absolute w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] object-contain"
             />
           </div>
         </div>

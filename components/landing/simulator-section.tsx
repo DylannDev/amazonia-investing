@@ -27,7 +27,7 @@ export function SimulatorSection() {
         <SimulatorCard />
 
         <motion.div
-          className="rounded-3xl text-yellow-900 p-12 text-center bg-yellow-200 col-span-3 mt-16"
+          className="rounded-3xl text-yellow-900 p-8 sm:p-12 text-center bg-yellow-200 col-span-3 mt-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

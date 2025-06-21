@@ -1,17 +1,18 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { ArrowButton } from "@/components/ui/arrow-button";
 import { Typography } from "@/components/ui/typography";
+import { Container } from "@/components/ui/container";
 import Image from "next/image";
-import InfoCard from "../ui/infos-card";
 import { CallButton } from "../ui/call-button";
-import { FloatingCoins } from "../ui/floating-coins";
+import HeroImage from "./hero-image";
 import {
   PiChartLineUpDuotone,
   PiHandshakeDuotone,
   PiWalletDuotone,
 } from "react-icons/pi";
+import { Shadow } from "../ui/shadow";
+import { DecorativeElements } from "./decorative-elements";
 
 const benefits = [
   {
@@ -33,16 +34,16 @@ const benefits = [
 
 export function HeroSection() {
   return (
-    <section className="relative py-20 sm:py-32 overflow-hidden max-w-[1800px] mx-auto">
-      <div className="container relative mx-auto px-4 flex items-center gap-20">
-        <div className="flex flex-col gap-8 text-left w-[55%]">
+    <section className="relative pt-12 pb-20 sm:py-32">
+      <Container className="flex flex-col lg:flex-row items-center gap-10 sm:gap-20">
+        <div className="flex flex-col gap-8 text-center lg:text-left w-full lg:w-[55%]">
           <div>
             <Typography
               as="h1"
               variant="6xl"
               weight="semibold"
               lineHeight="tightest"
-              className="mb-4 text-balance"
+              className="mb-4 text-balance text-"
             >
               Générez un revenu mensuel passif à vie grâce à un investissement
               unique
@@ -50,9 +51,8 @@ export function HeroSection() {
 
             <Typography
               as="p"
-              variant="xl"
               weight="normal"
-              className="mb-0 text-balance text-gray-600"
+              className="mb-0 text-balance text-gray-600 text-base sm:text-lg md:text-xl"
             >
               Investissez une seule fois à partir de 150€ et percevez jusqu'à
               17,5% de rendement mensuel à vie. Votre capital est investi dans
@@ -61,83 +61,53 @@ export function HeroSection() {
             </Typography>
           </div>
 
-          <div className="flex gap-4 justify-center sm:justify-start max-w-[530px] ">
-            <CallButton className="w-full" />
-            <ArrowButton variant="black" className="w-full" />
-          </div>
+          <HeroImage className="block sm:hidden" />
 
-          <div className="flex gap-4 w-fit">
-            {benefits.map((item, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <span
-                  className={`p-2 rounded-full text-lg border ${item.color}`}
-                >
-                  {item.icon}
-                </span>
-                <Typography
-                  as="span"
-                  variant="sm"
-                  weight="normal"
-                  className="mb-0 text-gray-600"
-                >
-                  {item.text}
-                </Typography>
-              </div>
-            ))}
+          <div>
+            <div className="flex flex-wrap sm:flex-nowrap justify-center lg:justify-start gap-4 w-fit mx-auto lg:mx-0 mb-4 sm:mb-6">
+              <CallButton className="w-full sm:w-[50%]" />
+              <ArrowButton variant="black" className="w-full sm:w-[50%]" />
+            </div>
+
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 w-fit mx-auto lg:mx-0">
+              {benefits.map((item, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <span
+                    className={`p-2 rounded-full text-lg border ${item.color}`}
+                  >
+                    {item.icon}
+                  </span>
+                  <Typography
+                    as="span"
+                    variant="sm"
+                    weight="normal"
+                    className="mb-0 text-gray-600"
+                  >
+                    {item.text}
+                  </Typography>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Hero image */}
-        <div className="relative w-[45%] flex">
-          <div className="relative w-full h-full aspect-1/2 max-h-[350px] sm:max-h-[600px]">
-            <FloatingCoins
-              src="/coin-1.svg"
-              alt="Décoration coin supérieur gauche"
-              className="-bottom-10 right-40"
-              delay={0}
-              size={60}
-            />
-            <FloatingCoins
-              src="/coin-2.svg"
-              alt="Décoration coin supérieur droit"
-              className="-top-10 -right-6"
-              delay={0.5}
-              size={90}
-            />
-            <FloatingCoins
-              src="/coin-3.svg"
-              alt="Décoration coin inférieur droit"
-              className="top-30 -left-10"
-              delay={1}
-              size={80}
-            />
-            <Image
-              src="/client-1.jpg"
-              alt="Client Amazonia Investing"
-              fill
-              quality={100}
-              sizes="(max-width: 768px) 100vw, 1000px"
-              className="object-cover object-bottom rounded-4xl -z-1"
-              priority
-              fetchPriority="high"
-            />
-          </div>
-          <InfoCard image="/infocard-hero.svg" />
-        </div>
-      </div>
+        <HeroImage className="hidden sm:block" />
+      </Container>
 
       {/* Background images */}
-      <div className="absolute top-10 left-0 -z-9 w-full h-full">
+      <div className="absolute -top-5 sm:top-10 -left-5 sm:left-0 -z-9 w-full h-full">
         <Image
           src="/shapes-small.svg"
           alt=""
-          width={400}
-          height={400}
-          className="absolute w-[400px] h-[400px] object-contain"
+          width={300}
+          height={300}
+          className="w-[200px] h-[200px] md:w-[300px] md:h-[300px] object-contain"
           priority
           fetchPriority="high"
         />
       </div>
+      <Shadow className="-top-30 -left-30" />
+      <DecorativeElements />
     </section>
   );
 }

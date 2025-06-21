@@ -1,56 +1,82 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { navLinks } from "@/data";
+import {
+  RiFacebookFill,
+  RiInstagramFill,
+  RiLinkedinFill,
+  RiWhatsappFill,
+} from "react-icons/ri";
+import { LuMail } from "react-icons/lu";
+import { Typography } from "../ui/typography";
+import { Logo } from "../ui/logo";
+import { Shadow } from "../ui/shadow";
 
 const footerLinks = {
-  navigation: [
-    { label: "Comment ça marche", href: "#how-it-works" },
-    { label: "Simulateur", href: "#simulator" },
-    { label: "Témoignages", href: "#testimonials" },
-    { label: "FAQ", href: "#faq" },
-  ],
   legal: [
     { label: "Mentions légales", href: "/mentions-legales" },
     { label: "Politique de confidentialité", href: "/confidentialite" },
     { label: "CGU", href: "/cgu" },
   ],
   contact: [
-    { icon: Phone, label: "+33 1 23 45 67 89", href: "tel:+33123456789" },
     {
-      icon: Mail,
-      label: "contact@amazonia-investing.com",
+      icon: <LuMail />,
+      label: "contact@amazonia-investing.fr",
       href: "mailto:contact@amazonia-investing.com",
     },
   ],
   social: [
-    { icon: Facebook, label: "Facebook", href: "https://facebook.com" },
-    { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
+    {
+      icon: <RiWhatsappFill />,
+      label: "Whatsapp",
+      href: "https://wa.me/+594694252185",
+    },
+    {
+      icon: <RiFacebookFill />,
+      label: "Facebook",
+      href: "https://facebook.com",
+    },
+    {
+      icon: <RiInstagramFill />,
+      label: "Instagram",
+      href: "https://instagram.com",
+    },
+    {
+      icon: <RiLinkedinFill />,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/company/amazoniacapital/",
+    },
   ],
 };
 
 export function Footer() {
   return (
-    <footer className="bg-black text-white">
-      <div className="container mx-auto px-4 pb-12 pt-72">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="bg-black text-white pb-12 pt-20 md:pt-32 relative overflow-hidden">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="flex flex-col lg:flex-row lg:flex-wrap justify-between gap-8">
           {/* Company Info */}
-          <div>
-            <h3 className="mb-4 text-lg font-semibold">Amazonia Investing</h3>
-            <p className="text-sm text-gray-300">
-              Investissez une seule fois et percevez des revenus mensuels à vie.
-              Gestion 100% déléguée par un trader professionnel.
-            </p>
+          <div className="flex flex-col items-center md:items-start mb-8 md:mb-0 xl:col-span-2">
+            <Logo variant="white" isFooter />
+            <Typography as="p" variant="lg" weight="normal" className="mt-2">
+              Rendre l'investissement accessible à tous.
+            </Typography>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="mb-4 text-lg font-semibold">Navigation</h3>
-            <ul className="space-y-2">
-              {footerLinks.navigation.map((link) => (
+            <Typography
+              as="h3"
+              variant="2xl"
+              weight="semibold"
+              className="text-center md:text-left"
+            >
+              Navigation
+            </Typography>
+            <ul className="space-y-2 text-center md:text-left">
+              {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-300 transition-colors hover:text-blue-300"
+                    className="text-lg text-gray-300 transition-colors hover:text-blue-300"
                   >
                     {link.label}
                   </Link>
@@ -61,13 +87,20 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="mb-4 text-lg font-semibold">Légal</h3>
-            <ul className="space-y-2">
+            <Typography
+              as="h3"
+              variant="2xl"
+              weight="semibold"
+              className="text-center md:text-left"
+            >
+              Légal
+            </Typography>
+            <ul className="space-y-2 text-center md:text-left">
               {footerLinks.legal.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-300 transition-colors hover:text-blue-300"
+                    className="text-lg text-gray-300 transition-colors hover:text-blue-300"
                   >
                     {link.label}
                   </Link>
@@ -77,31 +110,39 @@ export function Footer() {
           </div>
 
           {/* Contact */}
+
           <div>
-            <h3 className="mb-4 text-lg font-semibold">Contact</h3>
+            <Typography
+              as="h3"
+              variant="2xl"
+              weight="semibold"
+              className="text-center md:text-left"
+            >
+              Contact
+            </Typography>
             <ul className="space-y-2">
               {footerLinks.contact.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-blue-300"
+                    className="flex justify-center md:justify-start items-center gap-2 text-lg text-gray-300 transition-colors hover:text-blue-300"
                   >
-                    <link.icon className="h-4 w-4" />
+                    <span className="text-xl">{link.icon}</span>
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-            <div className="mt-4 flex gap-4">
+            <div className="mt-4 flex justify-center md:justify-start gap-4">
               {footerLinks.social.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full p-2 bg-blue-300 text-white transition-colors hover:bg-blue-600"
+                  className="rounded-full p-2 bg-blue-300 text-white hover:-translate-y-1 transition-all duration-300"
                 >
-                  <link.icon className="h-4 w-4" />
+                  <span className="text-2xl">{link.icon}</span>
                   <span className="sr-only">{link.label}</span>
                 </Link>
               ))}
@@ -110,16 +151,32 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 border-t border-gray-700 pt-8 text-center text-sm text-gray-300">
-          <p>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mt-20 border-t-2 border-gray-700 pt-10 text-center text-lg text-gray-300">
+          <Typography as="p" variant="lg" weight="normal">
             © {new Date().getFullYear()} Amazonia Investing. Tous droits
             réservés.
-          </p>
-          <p className="mt-2">
-            Les performances passées ne garantissent pas les performances
-            futures. Ce produit n'est pas réglementé par l'AMF.
-          </p>
+          </Typography>
+          <Typography as="p" variant="lg" weight="normal">
+            Développé par{" "}
+            <a
+              href="https://vizionweb.fr/"
+              target="blank"
+              className="hover:underline underline-offset-8 text-blue-300 font-medium"
+            >
+              Vizion Web
+            </a>{" "}
+            💫
+          </Typography>
         </div>
+      </div>
+
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <Shadow
+          className="-bottom-10 -left-30 opacity-30"
+          color="blue"
+          size="sm"
+          zIndex="z-0"
+        />
       </div>
     </footer>
   );

@@ -34,7 +34,7 @@ export function HighlightCard({
       >
         {number}
       </Typography>
-      <Typography as="p" variant="lg" weight="normal" className="text-center">
+      <Typography as="p" variant="xl" weight="normal" className="text-center">
         {label}
       </Typography>
     </motion.div>

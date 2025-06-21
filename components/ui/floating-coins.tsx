@@ -3,40 +3,29 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-interface FloatingCornerProps {
+interface FloatingCoinsProps {
   src: string;
-  alt: string;
   className?: string;
   delay?: number;
-  size?: number;
 }
 
 export function FloatingCoins({
   src,
-  alt,
-  className,
+  className = "",
   delay = 0,
-  size = 100,
-}: FloatingCornerProps) {
+}: FloatingCoinsProps) {
   return (
     <motion.div
       className={`absolute ${className}`}
-      animate={{
-        y: [0, -5, 0],
-      }}
-      transition={{
-        duration: 3,
-        repeat: Infinity,
-        delay,
-        ease: "easeInOut",
-      }}
+      animate={{ y: [0, -5, 0] }}
+      transition={{ duration: 3, repeat: Infinity, delay, ease: "easeInOut" }}
     >
       <Image
         src={src}
-        alt={alt}
-        width={size}
-        height={size}
-        className={`${size ? "" : "w-auto h-auto"}`}
+        alt="Pièces de monnaie décoratives - Amazonia Investing"
+        fill
+        sizes="100%"
+        className="object-contain"
         priority
       />
     </motion.div>

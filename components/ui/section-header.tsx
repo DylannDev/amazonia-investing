@@ -24,8 +24,10 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div
-      className={`space-y-4 mb-12 max-w-4xl mx-auto ${className} ${
-        textAlign === "left" ? "text-left" : "text-center"
+      className={`space-y-4 max-w-4xl ${className} ${
+        textAlign === "left"
+          ? "text-center md:text-left"
+          : "text-center mb-12 mx-auto"
       } ${sectionDark ? "text-white" : "text-black"}`}
     >
       <Badge variant={badgeVariant}>{badge}</Badge>
@@ -34,7 +36,9 @@ export function SectionHeader({
         variant="5xl"
         weight="semibold"
         lineHeight="tightest"
-        className="text-balance"
+        className={`text-balance ${
+          textAlign === "left" && !description && "mb-0"
+        }`}
       >
         {title}
       </Typography>

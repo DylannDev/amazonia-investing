@@ -7,20 +7,38 @@ interface BadgeProps {
   children: React.ReactNode;
   className?: string;
   variant?: "blue" | "green" | "red";
+  isBgVisible?: boolean;
 }
 
-export function Badge({ children, className, variant = "blue" }: BadgeProps) {
+const variantStyles = {
+  blue: "text-blue-300",
+  green: "text-green-300",
+  red: "text-red-300",
+};
+
+const bgStyles = {
+  blue: "bg-blue-100",
+  green: "bg-green-100",
+  red: "bg-red-100",
+};
+
+export function Badge({
+  children,
+  className,
+  variant = "blue",
+  isBgVisible = false,
+}: BadgeProps) {
   return (
     <div className="mb-3">
       <Typography
         as="span"
-        variant="base"
+        variant="sm"
         weight="semibold"
         className={cn(
           "w-fit uppercase",
-          variant === "blue" && "text-blue-300",
-          variant === "green" && "text-green-300",
-          variant === "red" && "text-red-300",
+          variantStyles[variant],
+          isBgVisible && "px-3 py-[6px] rounded-md",
+          isBgVisible && bgStyles[variant],
           className
         )}
       >

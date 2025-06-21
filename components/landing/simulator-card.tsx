@@ -1,18 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ExampleCard } from "./example-card";
-import { formatNumber } from "@/lib/utils";
-
-const examples = [
-  { investment: 1000, monthlyReturn: 175, variant: "blue" as const },
-  { investment: 2000, monthlyReturn: 350, variant: "green" as const },
-  { investment: 5000, monthlyReturn: 875, variant: "red" as const },
-];
+import { SimulatorExamples } from "./simulator-examples";
+import { SimulatorResults } from "./simulator-results";
+import { CallButton } from "../ui/call-button";
 
 export function SimulatorCard() {
   const [investment, setInvestment] = useState<string>("");
@@ -34,13 +28,13 @@ export function SimulatorCard() {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <Card className="p-12">
+      <Card className="p-6 sm:p-12">
         <div className="mb-8">
           <Label
             htmlFor="investment"
             className="mb-2 block text-xl font-medium"
           >
-            Montant de votre investissement (€)
+            Montant de votre investissement
           </Label>
           <div className="relative">
             <Input
@@ -56,53 +50,18 @@ export function SimulatorCard() {
         </div>
 
         {investment ? (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-4"
-          >
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Card
-                variant="blue"
-                className="flex items-center justify-between rounded-xl col-span-2"
-              >
-                <div className="text-lg">Revenu mensuel estimé</div>
-                <div className="text-2xl font-semibold">
-                  {formatNumber(monthlyReturn)} €
-                </div>
-              </Card>
-              <Card variant="green" className="rounded-xl">
-                <div className="text-lg">Revenu annuel estimé</div>
-                <div className="text-2xl font-semibold">
-                  {formatNumber(yearlyReturn)} €
-                </div>
-              </Card>
-              <Card variant="red" className="rounded-xl">
-                <div className="text-lg">Revenu sur 3 ans estimé</div>
-                <div className="text-2xl font-semibold">
-                  {formatNumber(threeYearReturn)} €
-                </div>
-              </Card>
-            </div>
-          </motion.div>
+          <SimulatorResults
+            monthlyReturn={monthlyReturn}
+            yearlyReturn={yearlyReturn}
+            threeYearReturn={threeYearReturn}
+          />
         ) : (
-          <div className="space-y-4">
-            <div className="text-center text-lg text-gray-600">
-              Exemples de rendements mensuels :
-            </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {examples.map((example) => (
-                <ExampleCard
-                  key={example.investment}
-                  investment={example.investment}
-                  monthlyReturn={example.monthlyReturn}
-                  variant={example.variant}
-                />
-              ))}
-            </div>
-          </div>
+          <SimulatorExamples />
         )}
       </Card>
+      <div className="flex justify-center mt-12">
+        <CallButton variant="blue" className="w-fit" />
+      </div>
     </div>
   );
 }

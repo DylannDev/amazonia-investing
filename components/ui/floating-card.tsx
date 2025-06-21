@@ -11,7 +11,7 @@ const FloatingCard = ({
   return (
     <motion.div
       initial={{ y: 0 }}
-      animate={{ y: [-8, 8, -8] }}
+      animate={{ y: [-8, 0, -8] }}
       transition={{
         duration: 6,
         repeat: Infinity,
