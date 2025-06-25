@@ -1,9 +1,9 @@
 import { ExampleCard } from "./example-card";
 
 const examples = [
-  { investment: 1000, monthlyReturn: 175, variant: "blue" as const },
-  { investment: 2000, monthlyReturn: 350, variant: "green" as const },
-  { investment: 5000, monthlyReturn: 875, variant: "red" as const },
+  { investment: 1000, monthlyReturn: 100, variant: "blue" as const },
+  { investment: 2000, monthlyReturn: 200, variant: "green" as const },
+  { investment: 5000, monthlyReturn: 500, variant: "red" as const },
 ];
 
 export function SimulatorExamples() {

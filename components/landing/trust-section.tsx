@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SectionHeader } from "../ui/section-header";
 import { Typography } from "../ui/typography";
 import { cn } from "@/lib/utils";
+import { StaggeredCards } from "../ui/animations";
 
 const trustCards = [
   {
@@ -32,21 +33,19 @@ export function TrustSection() {
   return (
     <section className="pt-20 pb-10 md:pt-32 md:pb-20 relative">
       <div className="container mx-auto px-4">
-        <motion.div
-          className="mx-auto max-w-3xl text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className="mx-auto max-w-3xl text-center mb-16">
           <SectionHeader
             badge="pourquoi nous faire confiance ?"
             title="Des dizaines d'investisseurs nous font déjà confiance"
             description="Notre modèle repose sur la transparence, la stabilité, et l'humain, voici ce qui fait la force d'Amazonia Investing."
           />
-        </motion.div>
+        </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <StaggeredCards
+          stagger={0.2}
+          delay={0.4}
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+        >
           {trustCards.map((card, index) => (
             <motion.div
               key={index}
@@ -56,12 +55,12 @@ export function TrustSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="relative h-[350px] sm:h-[550px] overflow-hidden rounded-4xl transition-all duration-300">
+              <div className="relative h-[350px] sm:h-[550px] overflow-hidden rounded-4xl transition-all duration-150">
                 <div
                   className={cn("absolute inset-0 bg-cover", card.imgClassName)}
                   style={{ backgroundImage: `url(${card.image})` }}
                 />
-                <div className="absolute top-0 flex items-center justify-center w-full p-6 bg-black/30 transition-all duration-300 group-hover:bg-black/40">
+                <div className="absolute top-0 flex items-center justify-center w-full p-6 bg-black/30 transition-all duration-150 group-hover:bg-black/40">
                   <Typography
                     as="p"
                     variant="2xl"
@@ -75,7 +74,7 @@ export function TrustSection() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </StaggeredCards>
       </div>
     </section>
   );

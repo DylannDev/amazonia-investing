@@ -13,6 +13,7 @@ import { Accordion } from "@/components/ui/accordion";
 import InfoCard from "../ui/infos-card";
 import { Shadow } from "../ui/shadow";
 import { Container } from "../ui/container";
+import { FadeInImage, StaggeredCards } from "../ui/animations";
 
 const steps = [
   {
@@ -33,14 +34,20 @@ const steps = [
     icon: <PiHandCoinsDuotone />,
     title: "Vous percevez vos rentes chaque mois",
     description:
-      "Chaque mois, vous recevez jusqu'à 17,5% de rendement sur votre investissement initial, directement sur votre compte. Ces rentes mensuelles sont versées à vie, tant que les conditions du contrat sont respectées. C'est votre argent qui travaille pour vous, de façon automatique et régulière.",
+      "Chaque mois, vous recevez jusqu'à 10% de rendement sur votre investissement initial, directement sur votre compte. Ces rentes mensuelles sont versées à vie, tant que les conditions du contrat sont respectées. C'est votre argent qui travaille pour vous, de façon automatique et régulière.",
     color: "red" as const,
   },
 ];
 
 export function HowItWorksSection() {
   return (
-    <section className="py-20 md:py-32 bg-black text-white relative overflow-hidden">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5 }}
+      className="py-20 md:py-32 bg-black text-white relative overflow-hidden"
+    >
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <Shadow
           className="-top-60 -left-60"
@@ -53,37 +60,31 @@ export function HowItWorksSection() {
       <Container className="relative z-10">
         <div className="flex flex-col lg:flex-row items-start gap-24">
           <div className="w-full lg:w-1/2">
-            <motion.div
-              className="max-w-3xl"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <SectionHeader
-                badge="comment ça marche ?"
-                title="3 étapes simples pour générer des revenus passifs chaque mois"
-                textAlign="left"
-                sectionDark
-              />
-            </motion.div>
+            <SectionHeader
+              badge="comment ça marche ?"
+              title="3 étapes simples pour générer des revenus passifs chaque mois"
+              textAlign="left"
+              isSectionDark
+            />
 
             <Accordion type="single" collapsible className="w-full mt-8">
-              {steps.map((step, index) => (
-                <StepAccordion
-                  key={step.title}
-                  icon={step.icon}
-                  title={step.title}
-                  description={step.description}
-                  index={index}
-                  color={step.color}
-                />
-              ))}
+              <StaggeredCards stagger={0.2} delay={0.4}>
+                {steps.map((step, index) => (
+                  <StepAccordion
+                    key={step.title}
+                    icon={step.icon}
+                    title={step.title}
+                    description={step.description}
+                    index={index}
+                    color={step.color}
+                  />
+                ))}
+              </StaggeredCards>
             </Accordion>
           </div>
 
           {/* Image à droite */}
-          <div className="relative w-full lg:w-1/2 h-full">
+          <FadeInImage delay={0.6} className="relative w-full lg:w-1/2 h-full">
             <div className="relative w-full h-full aspect-square lg:aspect-2/3 xl:aspect-square max-h-[700px] rounded-4xl overflow-hidden">
               <Image
                 src="/client-1.jpg"
@@ -91,8 +92,8 @@ export function HowItWorksSection() {
                 fill
                 className="object-cover"
                 quality={100}
-                sizes="100vw"
-                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
               />
             </div>
             <InfoCard
@@ -103,9 +104,9 @@ export function HowItWorksSection() {
               image="/infocard-process-2.svg"
               className="bottom-5 sm:bottom-10 -left-8 min-[500px]:left-0 sm:-left-4 md:-left-8 scale-60 min-[500px]:scale-80 sm:scale-100 w-[244px] h-[136px]"
             />
-          </div>
+          </FadeInImage>
         </div>
       </Container>
-    </section>
+    </motion.section>
   );
 }

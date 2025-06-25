@@ -8,12 +8,13 @@ import { TrustSection } from "@/components/landing/trust-section";
 import { FaqSection } from "@/components/landing/faq-section";
 import { CtaSection } from "@/components/landing/cta-section";
 import { HighlightsSection } from "@/components/landing/highlights-section";
+import { PainSection } from "@/components/landing/pain-section";
 import BlogSection from "@/components/landing/blog-section";
 
 export const metadata = {
   title: "Amazonia Investing - Investissement Unique, Revenus Mensuels à Vie",
   description:
-    "Investissez une seule fois à partir de 150€ et percevez jusqu'à 17,5% de rendement mensuel à vie. Gestion 100% déléguée par un trader professionnel.",
+    "Investissez une seule fois à partir de 150€ et percevez jusqu'à 10% de rendement mensuel à vie. Gestion 100% déléguée par un trader professionnel.",
 };
 
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
         <FounderSection />
       </div>
       <FaqSection />
+      <PainSection />
       <HighlightsSection />
       <BlogSection />
       <CtaSection />

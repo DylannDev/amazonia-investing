@@ -28,12 +28,12 @@ function BlogSection() {
               badge="blog"
               title="Vous souhaitez en savoir plus sur Amazonia Investing ?"
               textAlign="left"
-              sectionDark
+              isSectionDark
             />
 
-            <div className="flex items-center gap-4 mt-8 lg:mt-0">
-              <CarouselPrevious className="static text-white border-2 border-white hover:bg-blue-300 hover:text-white cursor-pointer hover:border-blue-300 transition-colors duration-300" />
-              <CarouselNext className="static text-white border-2 border-white hover:bg-blue-300 hover:text-white cursor-pointer hover:border-blue-300 transition-colors duration-300" />
+            <div className="hidden lg:flex items-center gap-4 mt-8 lg:mt-0">
+              <CarouselPrevious className="static text-white border-2 border-white hover:bg-blue-300 hover:text-white cursor-pointer hover:border-blue-300 transition-colors duration-150" />
+              <CarouselNext className="static text-white border-2 border-white hover:bg-blue-300 hover:text-white cursor-pointer hover:border-blue-300 transition-colors duration-150" />
             </div>
           </div>
 
@@ -47,6 +47,11 @@ function BlogSection() {
               </CarouselItem>
             ))}
           </CarouselContent>
+
+          <div className="flex lg:hidden justify-center items-center gap-4 mt-6">
+            <CarouselPrevious className="static text-white border-2 border-white hover:bg-blue-300 hover:text-white cursor-pointer hover:border-blue-300 active:bg-blue-300 active:border-blue-300 active:text-white active:scale-95 transition-colors duration-150" />
+            <CarouselNext className="static text-white border-2 border-white hover:bg-blue-300 hover:text-white cursor-pointer hover:border-blue-300 active:bg-blue-300 active:border-blue-300 active:text-white active:scale-95 transition-colors duration-150" />
+          </div>
         </Carousel>
       </div>
 

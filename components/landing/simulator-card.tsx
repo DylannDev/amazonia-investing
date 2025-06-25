@@ -12,7 +12,7 @@ export function SimulatorCard() {
   const [investment, setInvestment] = useState<string>("");
 
   const calculateReturn = (amount: number) => {
-    return amount * 0.175;
+    return amount * 0.1;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,7 +60,7 @@ export function SimulatorCard() {
         )}
       </Card>
       <div className="flex justify-center mt-12">
-        <CallButton variant="blue" className="w-fit" />
+        <CallButton className="w-fit" />
       </div>
     </div>
   );

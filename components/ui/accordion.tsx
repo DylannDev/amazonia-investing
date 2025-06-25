@@ -35,7 +35,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <span className="bg-blue-300 rounded-full p-2 sm:p-3 transition-transform duration-300 ml-4 sm:ml-10">
+      <span className="bg-blue-300 rounded-full p-2 sm:p-3 transition-transform duration-150 ml-4 sm:ml-10">
         <PiPlusBold className="text-xl sm:text-2xl text-white" />
       </span>
     </AccordionPrimitive.Trigger>

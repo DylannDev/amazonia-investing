@@ -123,6 +123,23 @@
   }
 }
 
+.markdown {
+  h1 {
+    @apply text-center text-[32px] sm:text-[50px] leading-tight font-semibold text-black my-8;
+  }
+  h2 {
+    @apply text-2xl sm:text-3xl leading-tight font-semibold text-black mt-4 sm:mt-8 mb-2 sm:mb-4;
+  }
+  p {
+    margin-bottom: 0.75rem;
+  }
+  strong {
+    @apply font-semibold;
+  }
+
+  @apply text-base sm:text-lg text-gray-600 leading-relaxed font-normal;
+}
+
 .rich-text {
   h2 {
     @apply text-[32px] sm:text-[50px] leading-tight font-semibold text-black my-8;

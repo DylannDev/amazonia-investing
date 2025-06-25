@@ -12,12 +12,13 @@ import { CallButton } from "@/components/ui/call-button";
 import { PiHeadsetDuotone } from "react-icons/pi";
 import { Typography } from "@/components/ui/typography";
 import { Shadow } from "../ui/shadow";
+import { FadeInImage, StaggeredCards } from "../ui/animations";
 
 const faqs = [
   {
     question: "Est-ce que les rendements sont garantis ?",
     answer:
-      "Amazonia Investing applique une stratégie de trading à faible risque, conçue pour offrir une rentabilité durable. L'objectif est d'atteindre un rendement mensuel de 17,5%. Toutefois, comme tout investissement sur les marchés financiers, ce niveau de performance ne peut pas être garanti à 100%. Un rendement minimum de 10% par mois est cependant contractuellement garanti, sauf en cas de conditions exceptionnelles de marché.",
+      "Amazonia Investing applique une stratégie de trading à faible risque, conçue pour offrir une rentabilité durable. L'objectif est d'atteindre un rendement mensuel de 10%. Toutefois, comme tout investissement sur les marchés financiers, ce niveau de performance ne peut pas être garanti à 100%. Un rendement minimum de 10% par mois est cependant contractuellement garanti, sauf en cas de conditions exceptionnelles de marché.",
   },
   {
     question: "Puis-je récupérer mon capital plus tard ?",
@@ -53,7 +54,13 @@ const faqs = [
 
 export function FaqSection() {
   return (
-    <section className="py-20 md:py-32 text-white bg-black relative">
+    <motion.section
+      id="faq"
+      className="py-20 md:py-32 text-white bg-black relative"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-150px" }}
+    >
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <Shadow
           className="-top-40 left-[50%] -translate-x-[50%]"
@@ -64,60 +71,42 @@ export function FaqSection() {
       </div>
 
       <div className="container mx-auto px-4 relative">
-        <motion.div
-          className="mx-auto max-w-4xl text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <SectionHeader
-            badge="FAQ"
-            title="Questions fréquentes sur Amazonia Investing"
-            description="Tout ce que vous devez savoir avant d'investir."
-            sectionDark
-          />
-        </motion.div>
+        <SectionHeader
+          badge="FAQ"
+          title="Questions fréquentes sur Amazonia Investing"
+          description="Tout ce que vous devez savoir avant d'investir."
+          isSectionDark
+        />
 
         <div className="relative">
           <div className="flex flex-col lg:flex-row gap-16 max-w-7xl mx-auto">
-            <motion.div
-              className="w-full lg:w-[60%]"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
+            <div className="w-full lg:w-[60%]">
               <Accordion
                 type="single"
                 collapsible
                 className="w-full flex flex-col"
               >
-                {faqs.map((faq, index) => (
-                  <AccordionItem
-                    key={index}
-                    value={`item-${index}`}
-                    className="border-gray-700 cursor-pointer"
-                  >
-                    <AccordionTrigger className="text-xl sm:text-2xl font-medium cursor-pointer">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-gray-300 text-base sm:text-lg font-normal mb-4">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
+                <StaggeredCards stagger={0.1} delay={0.4}>
+                  {faqs.map((faq, index) => (
+                    <AccordionItem
+                      key={index}
+                      value={`item-${index}`}
+                      className="border-gray-700 cursor-pointer"
+                    >
+                      <AccordionTrigger className="text-xl sm:text-2xl font-medium cursor-pointer">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-300 text-base sm:text-lg font-normal mb-4">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </StaggeredCards>
               </Accordion>
-            </motion.div>
+            </div>
 
             <div className="w-full lg:w-[40%]">
-              <motion.div
-                className="lg:sticky lg:top-30"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              >
+              <FadeInImage delay={0.4} className="lg:sticky lg:top-30">
                 <div className="bg-blue-50 rounded-3xl p-8 text-black">
                   <div className="flex flex-col items-center text-center space-y-6">
                     <span className="rounded-full p-4 text-3xl border-2 text-blue-600 bg-blue-200 border-blue-400">
@@ -146,11 +135,11 @@ export function FaqSection() {
                     <CallButton variant="blue" className="w-full" />
                   </div>
                 </div>
-              </motion.div>
+              </FadeInImage>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

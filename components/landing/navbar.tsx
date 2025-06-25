@@ -58,9 +58,9 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        initial={{ y: 0 }}
-        animate={{ y: isVisible ? 0 : -100 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
+        initial={{ opacity: 0, y: -100 }}
+        animate={{ opacity: 1, y: isVisible ? 0 : -100 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
         className="fixed left-0 right-0 top-0 z-100 border-b bg-white/95 backdrop-blur-sm h-[80px] sm:h-[100px] flex items-center"
       >
         <Container className="w-full">
@@ -74,7 +74,7 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-black transition-all duration-300 ease-in-out hover:bg-blue-50 hover:text-blue-300 px-3 py-1 rounded-md"
+                  className="text-black transition-all duration-150 ease-in-out hover:bg-blue-50 hover:text-blue-300 px-3 py-1 rounded-md"
                 >
                   {item.label}
                 </Link>

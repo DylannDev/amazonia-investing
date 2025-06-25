@@ -8,6 +8,7 @@ interface BadgeProps {
   className?: string;
   variant?: "blue" | "green" | "red";
   isBgVisible?: boolean;
+  isBlogCard?: boolean;
 }
 
 const variantStyles = {
@@ -27,18 +28,20 @@ export function Badge({
   className,
   variant = "blue",
   isBgVisible = false,
+  isBlogCard = false,
 }: BadgeProps) {
   return (
     <div className="mb-3">
       <Typography
         as="span"
-        variant="sm"
         weight="semibold"
         className={cn(
           "w-fit uppercase",
           variantStyles[variant],
           isBgVisible && "px-3 py-[6px] rounded-md",
           isBgVisible && bgStyles[variant],
+          isBlogCard ? "text-sm" : "text-sm sm:text-base",
+
           className
         )}
       >

@@ -4,9 +4,11 @@ import Image from "next/image";
 import { blogArticles } from "@/data";
 import { Typography } from "@/components/ui/typography";
 import { Badge } from "@/components/ui/badge";
-import { CallButton } from "@/components/ui/call-button";
 import { formatDate } from "@/lib/utils";
 import { Metadata } from "next";
+import { BlogCta } from "@/components/blog/blog-cta";
+import RelatedPosts from "@/components/blog/related-posts";
+import FadeInText, { FadeInImage } from "@/components/ui/animations";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -28,10 +30,13 @@ export async function generateMetadata({
 
   return {
     title: `${article.title} - Amazonia Investing`,
-    description: `Découvrez ${article.title} sur Amazonia Investing. Investissement unique, revenus mensuels à vie.`,
+    description:
+      "Découvrez comment faire travailler votre argent intelligemment grâce à notre approche simple, accessible et performante de l’investissement.",
+
     openGraph: {
       title: article.title,
-      description: `Découvrez ${article.title} sur Amazonia Investing.`,
+      description:
+        "Découvrez comment faire travailler votre argent intelligemment grâce à notre approche simple, accessible et performante de l’investissement.",
       images: [article.image],
       type: "article",
       publishedTime: article.date,
@@ -60,11 +65,14 @@ const BlogPostPage = async ({
   return (
     <main className="">
       {/* Header de l'article */}
-      <section className="relative pt-16 sm:pt-28 pb-5">
+      <section className="relative pt-32 sm:pt-44 pb-5">
         <div className="container max-w-[64rem] mx-auto px-4">
           <div className="text-center">
             {/* Badge et métadonnées */}
-            <div className="flex flex-col items-center gap-4 mb-6">
+            <FadeInText
+              delay={0.2}
+              className="flex flex-col items-center gap-4 mb-6"
+            >
               <Badge variant="blue" isBgVisible>
                 {article.category}
               </Badge>
@@ -73,30 +81,36 @@ const BlogPostPage = async ({
                 <span>•</span>
                 <span>{formatDate(article.date)}</span>
               </div>
-            </div>
+            </FadeInText>
 
             {/* Titre */}
-            <Typography
-              as="h1"
-              variant="5xl"
-              weight="semibold"
-              lineHeight="tightest"
-              className="mb-10 text-balance"
-            >
-              {article.title}
-            </Typography>
+            <FadeInText delay={0.6}>
+              <Typography
+                as="h1"
+                variant="5xl"
+                weight="semibold"
+                lineHeight="tightest"
+                className="mb-10 text-balance"
+              >
+                {article.title}
+              </Typography>
+            </FadeInText>
 
             {/* Image principale */}
-            <div className="relative w-full aspect-square sm:aspect-16/9 rounded-3xl overflow-hidden">
+            <FadeInImage
+              delay={0.8}
+              className="relative w-full aspect-square sm:aspect-16/9 rounded-3xl overflow-hidden"
+            >
               <Image
                 src={article.image}
                 alt={article.title}
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 1200px"
+                sizes="(max-width: 1024px) 100vw, 1000px"
                 priority
+                fetchPriority="high"
               />
-            </div>
+            </FadeInImage>
           </div>
         </div>
       </section>
@@ -104,38 +118,20 @@ const BlogPostPage = async ({
       {/* Contenu de l'article */}
       <section className="pb-20 sm:pb-32">
         <div className="container max-w-[64rem] mx-auto px-4">
-          <div className="">
+          <FadeInText delay={1}>
             <article
               className="rich-text max-w-none"
               dangerouslySetInnerHTML={{ __html: article.content }}
             />
+          </FadeInText>
 
-            {/* Call-to-action */}
-            <div className="mt-16 px-6 py-12 sm:p-12 bg-blue-50 rounded-3xl">
-              <div className="text-center">
-                <Typography
-                  as="h3"
-                  variant="4xl"
-                  weight="semibold"
-                  className="mb-4"
-                >
-                  Prêt à commencer votre investissement ?
-                </Typography>
-                <Typography
-                  as="p"
-                  variant="xl"
-                  weight="normal"
-                  className="mb-6 text-gray-600"
-                >
-                  Rejoignez les investisseurs qui perçoivent déjà un revenu
-                  mensuel régulier grâce à Amazonia Investing.
-                </Typography>
-                <CallButton variant="blue" />
-              </div>
-            </div>
-          </div>
+          {/* Call-to-action */}
+          <BlogCta />
         </div>
       </section>
+
+      {/* Articles liés */}
+      <RelatedPosts currentSlug={slug} />
     </main>
   );
 };

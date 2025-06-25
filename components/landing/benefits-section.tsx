@@ -3,31 +3,32 @@ import { ArrowButton } from "../ui/arrow-button";
 import { Typography } from "../ui/typography";
 import { CallButton } from "../ui/call-button";
 import { BenefitCard } from "../ui/benefit-card";
+import FadeInText, { FadeInImage, StaggeredCards } from "../ui/animations";
 
 const benefits = [
   {
     investment: 150,
-    monthlyReturn: 26.25,
-    yearlyReturn: 315,
-    threeYearReturn: 945,
+    monthlyReturn: 15,
+    yearlyReturn: 180,
+    threeYearReturn: 540,
     color: "blue" as const,
     image: "coin-3.svg",
     imgSize: "w-[40px] h-[40px] sm:w-[55px] sm:h-[55px]",
   },
   {
     investment: 500,
-    monthlyReturn: 87.5,
-    yearlyReturn: 1050,
-    threeYearReturn: 3150,
+    monthlyReturn: 50,
+    yearlyReturn: 600,
+    threeYearReturn: 1800,
     color: "green" as const,
     image: "coin-1.svg",
     imgSize: "w-[50px] h-[50px] sm:w-[65px] sm:h-[65px]",
   },
   {
     investment: 1000,
-    monthlyReturn: 175,
-    yearlyReturn: 2100,
-    threeYearReturn: 6300,
+    monthlyReturn: 100,
+    yearlyReturn: 1200,
+    threeYearReturn: 3600,
     color: "red" as const,
     image: "coin-2.svg",
     imgSize: "w-[60px] h-[60px] sm:w-[75px] sm:h-[75px]",
@@ -40,17 +41,25 @@ export function BenefitsSection() {
       <div className="container mx-auto px-4">
         <SectionHeader
           badge="Votre Investissement"
-          title="Rentabilisez votre investissement en 6 mois et percevez des revenus à vie"
-          description="Dès 150€, commencez à percevoir jusqu'à 17,5% de rendement mensuel à vie. Voici ce que ça représente concrètement :"
+          title="Rentabilisez votre investissement en 10 mois et percevez des revenus à vie"
+          description="Dès 150€, commencez à percevoir jusqu'à 10% de rendement mensuel à vie. Voici ce que ça représente concrètement :"
         />
 
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
+        <StaggeredCards
+          stagger={0.2}
+          delay={0.4}
+          className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8"
+        >
           {benefits.map((benefit, index) => (
             <BenefitCard key={benefit.investment} {...benefit} index={index} />
           ))}
-        </div>
-        <div className="flex flex-col md:flex-row items-center md:justify-between gap-8 p-12 rounded-3xl bg-yellow-200">
-          <div className="text-center md:text-left">
+        </StaggeredCards>
+        <FadeInImage
+          direction="y"
+          delay={0.6}
+          className="flex flex-col md:flex-row items-center md:justify-between gap-8 p-12 rounded-3xl bg-yellow-200"
+        >
+          <FadeInText delay={0.8} className="text-center md:text-left">
             <Typography
               as="h3"
               variant="4xl"
@@ -68,16 +77,16 @@ export function BenefitsSection() {
             >
               Simulez votre retour sur investissement dès maintenant
             </Typography>
-          </div>
-          <div className="flex flex-col xl:flex-row gap-4">
+          </FadeInText>
+          <FadeInText delay={0.8} className="flex flex-col xl:flex-row gap-4">
             <CallButton variant="black" className="w-full" />
             <ArrowButton
               label="Simuler mes revenus"
               variant="outline"
               className="w-full"
             />
-          </div>
-        </div>
+          </FadeInText>
+        </FadeInImage>
       </div>
     </section>
   );

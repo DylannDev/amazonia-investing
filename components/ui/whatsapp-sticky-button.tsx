@@ -15,7 +15,7 @@ export function WhatsappStickyButton() {
     >
       <div className="relative">
         <div
-          className="absolute right-18 bottom-1 z-[-1] block py-3 px-4 bg-black border-2 border-white rounded-xl shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto transition-all duration-300 ease-in-out"
+          className="absolute right-18 bottom-1 z-[-1] block py-3 px-4 bg-black border-2 border-white rounded-xl shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none group-hover:pointer-events-auto transition-all duration-150 ease-in-out"
           style={{ minWidth: "180px" }}
         >
           <Typography

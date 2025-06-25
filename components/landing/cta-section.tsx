@@ -2,12 +2,16 @@ import Image from "next/image";
 import { CallButton } from "../ui/call-button";
 import { SectionHeader } from "../ui/section-header";
 import { Shadow } from "../ui/shadow";
+import { FadeInImage } from "../ui/animations";
 
 export function CtaSection() {
   return (
     <section className="pt-20 sm:pt-32 pb-0 bg-black border-y border-black">
       <div className="container mx-auto px-4">
-        <div className="text-center bg-white border-2 border-white rounded-3xl px-6 py-12 sm:p-12 relative z-50 overflow-hidden">
+        <FadeInImage
+          direction="y"
+          className="text-center bg-white border-2 border-white rounded-3xl px-6 py-12 sm:p-12 relative z-50 overflow-hidden"
+        >
           <SectionHeader
             title="Recevez vos premiers revenus dès ce mois-ci"
             description="Rejoignez les investisseurs qui perçoivent déjà un revenu mensuel régulier grâce à Amazonia Investing. Notre équipe vous guide pas à pas, de l’investissement à la première rente."
@@ -37,7 +41,7 @@ export function CtaSection() {
               className="absolute w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] object-contain"
             />
           </div>
-        </div>
+        </FadeInImage>
       </div>
     </section>
   );

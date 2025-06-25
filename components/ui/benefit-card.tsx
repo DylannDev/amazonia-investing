@@ -73,6 +73,11 @@ export function BenefitCard({
       <div className="mt-6">
         <ArrowButton
           label={`Investir ${investment}€`}
+          href={`https://wa.me/+594694252185?text=${encodeURIComponent(
+            `Bonjour ! Je suis intéressé(e) par un investissement de ${investment}€ avec Amazonia Investing. Pouvez-vous m’en dire plus ?`
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
           variant="black"
           className="w-full"
         />

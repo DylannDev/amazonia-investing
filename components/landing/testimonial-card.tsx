@@ -63,7 +63,10 @@ export function TestimonialCard({
       <Card className="h-full flex flex-col justify-between gap-6">
         <div className="flex items-center justify-between">
           <div>
-            <div className="font-semibold mb-2 text-xl">{testimonial.name}</div>
+            <div className="font-semibold text-xl">{testimonial.name}</div>
+            <div className="mb-2 text-sm text-gray-500">
+              {testimonial.role}, {testimonial.age} ans
+            </div>
 
             <StarRating rating={testimonial.stars} />
           </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import FadeInText from "./animations";
 import { Badge } from "./badge";
 import { Typography } from "./typography";
 
@@ -10,7 +11,7 @@ interface SectionHeaderProps {
   className?: string;
   badgeVariant?: "blue" | "green" | "red";
   textAlign?: "center" | "left";
-  sectionDark?: boolean;
+  isSectionDark?: boolean;
 }
 
 export function SectionHeader({
@@ -20,15 +21,15 @@ export function SectionHeader({
   className = "",
   badgeVariant = "blue",
   textAlign = "center",
-  sectionDark = false,
+  isSectionDark = false,
 }: SectionHeaderProps) {
   return (
-    <div
+    <FadeInText
       className={`space-y-4 max-w-4xl ${className} ${
         textAlign === "left"
           ? "text-center md:text-left"
           : "text-center mb-12 mx-auto"
-      } ${sectionDark ? "text-white" : "text-black"}`}
+      } ${isSectionDark ? "text-white" : "text-black"}`}
     >
       <Badge variant={badgeVariant}>{badge}</Badge>
       <Typography
@@ -48,12 +49,12 @@ export function SectionHeader({
           variant="xl"
           weight="normal"
           className={`mb-0 text-balance ${
-            sectionDark ? "text-gray-300" : "text-gray-600"
+            isSectionDark ? "text-gray-300" : "text-gray-600"
           }`}
         >
           {description}
         </Typography>
       )}
-    </div>
+    </FadeInText>
   );
 }

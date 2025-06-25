@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, HTMLMotionProps } from "framer-motion";
 
 type TypographyVariant =
   | "xs"
@@ -27,24 +26,15 @@ type TypographyLineHeight = "tightest" | "tight" | "normal" | "relaxed";
 
 type TypographyAs = "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
-interface TypographyProps extends HTMLMotionProps<"p"> {
+interface TypographyProps {
   variant?: TypographyVariant;
   weight?: TypographyWeight;
   lineHeight?: TypographyLineHeight;
   as: TypographyAs;
-  animate?: boolean;
+  className?: string;
+  children: React.ReactNode;
+  [key: string]: any;
 }
-
-const motionComponents = {
-  p: motion.p,
-  span: motion.span,
-  h1: motion.h1,
-  h2: motion.h2,
-  h3: motion.h3,
-  h4: motion.h4,
-  h5: motion.h5,
-  h6: motion.h6,
-} as const;
 
 export function Typography({
   variant = "base",
@@ -53,16 +43,8 @@ export function Typography({
   as,
   className,
   children,
-  animate = true,
   ...props
 }: TypographyProps) {
-  const MotionComponent = motionComponents[as];
-
-  if (!MotionComponent) {
-    console.error(`Invalid 'as' prop value: ${as}`);
-    return null;
-  }
-
   const getVariantClass = () => {
     switch (variant) {
       case "xs":
@@ -143,16 +125,10 @@ export function Typography({
     }
   };
 
-  const defaultAnimation = animate
-    ? {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.5 },
-      }
-    : {};
+  const Component = as;
 
   return (
-    <MotionComponent
+    <Component
       className={cn(
         getVariantClass(),
         getWeightClass(),
@@ -160,10 +136,9 @@ export function Typography({
         getTitleTrackingAndMargin(),
         className
       )}
-      {...defaultAnimation}
       {...props}
     >
       {children}
-    </MotionComponent>
+    </Component>
   );
 }

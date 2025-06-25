@@ -1,7 +1,10 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import InfoCard from "@/components/ui/infos-card";
 import { FloatingCoins } from "@/components/ui/floating-coins";
+import { FadeInImage } from "../ui/animations";
 
 interface HeroImageProps {
   className?: string;
@@ -9,7 +12,7 @@ interface HeroImageProps {
 
 const HeroImage: React.FC<HeroImageProps> = ({ className = "" }) => {
   return (
-    <div className={`relative w-full lg:w-[45%] flex ${className}`}>
+    <FadeInImage className={`relative w-full lg:w-[45%] flex ${className}`}>
       <div className="relative w-full h-full aspect-1/2 max-[500px]:max-h-[350px] max-h-[450px] sm:max-h-[550px] md:max-h-[600px]">
         <FloatingCoins
           src="/coin-1.svg"
@@ -41,7 +44,7 @@ const HeroImage: React.FC<HeroImageProps> = ({ className = "" }) => {
         image="/infocard-hero.svg"
         className="bottom-8 sm:bottom-16 -left-2 sm:left-10 lg:-left-10 scale-60 min-[500px]:scale-80 sm:scale-100 w-[274px] h-[119px]"
       />
-    </div>
+    </FadeInImage>
   );
 };
 
