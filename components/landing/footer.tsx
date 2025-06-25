@@ -20,7 +20,7 @@ const footerLinks = {
   contact: [
     {
       icon: <LuMail />,
-      label: "contact@amazonia-investing.fr",
+      label: "contact@amazonia-investing.com",
       href: "mailto:contact@amazonia-investing.com",
     },
   ],
@@ -33,12 +33,12 @@ const footerLinks = {
     {
       icon: <RiFacebookFill />,
       label: "Facebook",
-      href: "https://facebook.com",
+      href: "https://facebook.com/amazoniaacademy",
     },
     {
       icon: <RiInstagramFill />,
       label: "Instagram",
-      href: "https://instagram.com",
+      href: "https://instagram.com/amazoniainvesting",
     },
     {
       icon: <RiLinkedinFill />,
