@@ -1,5 +1,3 @@
-"use client";
-
 import { FloatingCoins } from "./floating-coins";
 import { ArrowButton } from "./arrow-button";
 import { Card } from "./card";
