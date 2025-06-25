@@ -36,7 +36,6 @@ export function BenefitCard({
 }: BenefitCardProps) {
   return (
     <Card
-      index={index}
       className={`${
         index === 2 ? "col-span-1 md:col-span-2 lg:col-span-1" : ""
       }`}
