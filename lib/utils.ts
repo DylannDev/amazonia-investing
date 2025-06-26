@@ -1,5 +1,10 @@
+import { blogArticles } from "@/data";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+
+interface BlogArticle {
+  slug: string;
+}
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -18,3 +23,9 @@ export const formatDate = (input: Date | string): string => {
 
   return `${day} ${month}, ${year}`;
 };
+
+export function getBlogSlugs() {
+  return (blogArticles as unknown as BlogArticle[]).map((post) => ({
+    slug: post.slug,
+  }));
+}
