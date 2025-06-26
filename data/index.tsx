@@ -10,7 +10,7 @@ export const blogArticles = [
     slug: "comprendre-amazonia-investing-fonctionnement-securite-engagement",
     title:
       "Comprendre Amazonia Investing : fonctionnement, sécurité et engagement",
-    image: "/article-1.jpg",
+    image: "/article-1.webp",
     date: "2025-06-20",
     author: "Lory Othily",
     category: "Amazonia Investing",
@@ -47,7 +47,7 @@ export const blogArticles = [
   {
     slug: "rendement-10-pourcent-mensuel-amazonia-investing",
     title: "Pourquoi notre modèle vous verse 10% de rendement mensuel à vie",
-    image: "/article-2.jpg",
+    image: "/article-2.webp",
     date: "2025-06-20",
     author: "Lory Othily",
     category: "Amazonia Investing",
@@ -94,7 +94,7 @@ export const blogArticles = [
   {
     slug: "risques-strategies-rendement-eleve",
     title: "Quels sont les risques réels des stratégies à rendement élevé ?",
-    image: "/article-3.jpg",
+    image: "/article-3.webp",
     date: "2025-06-20",
     author: "Lory Othily",
     category: "Amazonia Investing",
@@ -136,7 +136,7 @@ export const blogArticles = [
   {
     slug: "securiser-revenus-investissement-amazonia",
     title: "Comment Amazonia Investing sécurise vos revenus ?",
-    image: "/article-4.jpg",
+    image: "/article-4.webp",
     date: "2025-06-20",
     author: "Lory Othily",
     category: "Amazonia Investing",
@@ -182,7 +182,7 @@ export const blogArticles = [
   {
     slug: "top-5-placements-revenu-passif-2025",
     title: "Le top 5 des placements pour générer un revenu passif en 2025",
-    image: "/article-5.jpg",
+    image: "/article-5.webp",
     date: "2025-06-21",
     author: "Lory Othily",
     category: "Investissement",
@@ -277,7 +277,7 @@ export const blogArticles = [
     slug: "alternative-livret-a-2025",
     title:
       "Quelle alternative au Livret A en 2025 pour booster votre épargne ?",
-    image: "/article-6.jpg",
+    image: "/article-6.webp",
     date: "2025-06-22",
     author: "Lory Othily",
     category: "Épargne",
@@ -354,7 +354,7 @@ export const blogArticles = [
     slug: "investir-1000-euros-2025",
     title:
       "Investir 1000 € intelligemment : les 3 options les plus rentables en 2025",
-    image: "/article-7.jpg",
+    image: "/article-7.webp",
     date: "2025-06-22",
     author: "Lory Othily",
     category: "Investissement",
@@ -405,7 +405,7 @@ export const blogArticles = [
   {
     slug: "placements-rendement-10-pourcent",
     title: "Quels placements proposent un rendement de 10% par mois ?",
-    image: "/article-8.jpg",
+    image: "/article-8.webp",
     date: "2025-06-22",
     author: "Lory Othily",
     category: "Investissement",

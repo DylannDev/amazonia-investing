@@ -87,7 +87,7 @@ export function HowItWorksSection() {
           <FadeInImage delay={0.6} className="relative w-full lg:w-1/2 h-full">
             <div className="relative w-full h-full aspect-square lg:aspect-2/3 xl:aspect-square max-h-[700px] rounded-4xl overflow-hidden">
               <Image
-                src="/client-1.jpg"
+                src="/client-1.webp"
                 alt="Investisseur satisfait consultant ses revenus mensuels Amazonia Investing"
                 fill
                 className="object-cover"

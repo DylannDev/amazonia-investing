@@ -13,7 +13,7 @@ export function FounderSection() {
           <FadeInImage className="relative w-full lg:w-[55%] flex justify-end">
             <div className="relative w-full h-full aspect-square md:aspect-1/2 rounded-4xl overflow-hidden max-w-[700px] md:max-w-[800px] max-h-[400px] min-[500px]:max-h-[500px] sm:max-h-[600px] md:max-h-[800px]">
               <Image
-                src="/founder.jpg"
+                src="/founder.webp"
                 alt="Fondateur Amazonia Investing Lory Othily"
                 fill
                 className="object-cover"

@@ -59,7 +59,7 @@ export function HighlightsSection() {
             className="relative w-full h-full aspect-[4/3] rounded-4xl overflow-hidden"
           >
             <Image
-              src="/happy-trader.jpg"
+              src="/happy-trader.webp"
               alt="Trader professionnel célébrant ses résultats positifs en trading - Amazonia Investing"
               fill
               className="object-cover object-right"

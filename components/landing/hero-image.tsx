@@ -30,7 +30,7 @@ const HeroImage: React.FC<HeroImageProps> = ({ className = "" }) => {
           className="top-30 -left-4 sm:-left-10 w-[50px] h-[50px] sm:w-[80px] sm:h-[80px]"
         />
         <Image
-          src="/client-hero.jpg"
+          src="/client-hero.webp"
           alt="Client recevant ses revenus mensuels sur son smartphone – Amazonia Investing"
           fill
           quality={100}

@@ -9,25 +9,25 @@ import { StaggeredCards } from "../ui/animations";
 
 const trustCards = [
   {
-    image: "/trust-1.jpg",
+    image: "/trust-1.webp",
     imgClassName: "object-center",
     text: "Une stratégie solide, testée sur le long terme",
     alt: "Trader professionnel en train de travailler",
   },
   {
-    image: "/trust-3.jpg",
+    image: "/trust-3.webp",
     imgClassName: "object-center",
     text: "Engagement contractuel clair, sans frais cachés",
     alt: "Client qui signe un contrat",
   },
   {
-    image: "/trust-2.jpg",
+    image: "/trust-2.webp",
     imgClassName: "object-right",
     text: "Une équipe d'experts dédiée, pas un système automatisé",
     alt: "Trader professionnel qui appelle un client",
   },
   {
-    image: "/trust-4.jpg",
+    image: "/trust-4.webp",
     imgClassName: "object-center",
     text: "Rendements mensuels versés sans interruption",
     alt: "Cliente heureuse qui reçoit sa rente",
