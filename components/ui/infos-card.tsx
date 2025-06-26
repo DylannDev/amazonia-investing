@@ -17,6 +17,9 @@ const InfoCard: React.FC<InfoCardProps> = ({
   fetchPriority = "high",
   loading,
 }) => {
+  // Si priority est true, on ne peut pas utiliser loading="lazy"
+  const imageLoading = priority ? undefined : loading || "lazy";
+
   return (
     <FloatingCard
       className={`absolute p-3 sm:p-5 bg-white/70 backdrop-blur-sm border-2 border-white rounded-2xl shadow-[0_0_20px_0_rgba(0,0,0,0.15)] ${className}`}
@@ -30,7 +33,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
           className="object-contain"
           priority={priority}
           fetchPriority={fetchPriority}
-          loading={loading || "lazy"}
+          loading={imageLoading}
         />
       </div>
     </FloatingCard>

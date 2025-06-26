@@ -47,6 +47,7 @@ export default function FadeInText({
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
+        viewport={{ once: true }}
         className={cn(className)}
       >
         {children.map((child, index) => (
@@ -63,6 +64,7 @@ export default function FadeInText({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       transition={{
         duration: 0.3,
         delay,
@@ -105,6 +107,7 @@ export function FadeInImage({
     <motion.div
       initial={getInitialPosition()}
       whileInView={getAnimatePosition()}
+      viewport={{ once: true }}
       transition={{
         duration: 0.3,
         delay,
@@ -148,6 +151,7 @@ export function StaggeredGrid({
             key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{
               duration: 0.3,
               delay: delay + index * stagger,
@@ -186,6 +190,7 @@ export function StaggeredCards({
           key={index}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{
             duration: 0.3,
             delay: delay + index * stagger,
