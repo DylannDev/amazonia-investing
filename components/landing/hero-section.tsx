@@ -35,14 +35,14 @@ export function HeroSection() {
   return (
     <section className="relative pt-28 pb-20 sm:pb-32 sm:pt-40">
       <Container className="flex flex-col lg:flex-row items-center gap-10 sm:gap-20">
-        <div className="flex flex-col gap-8 text-center lg:text-left w-full lg:w-[55%]">
+        <div className="flex flex-col gap-4 sm:gap-8 text-center lg:text-left w-full lg:w-[55%]">
           <FadeInText delay={0.2}>
             <Typography
               as="h1"
               variant="6xl"
               weight="semibold"
               lineHeight="tightest"
-              className="mb-4 text-balance text-"
+              className="mb-0 sm:mb-4 text-balance text-"
             >
               Générez un revenu mensuel passif à vie grâce à un investissement
               unique
@@ -53,7 +53,7 @@ export function HeroSection() {
             <Typography
               as="p"
               weight="normal"
-              className="mb-0 text-balance text-gray-600 text-base sm:text-lg md:text-xl"
+              className="mb-2 text-balance text-gray-600 text-base sm:text-lg md:text-xl"
             >
               Investissez une seule fois à partir de 150€ et percevez jusqu'à
               10% de rendement mensuel à vie. Votre capital est investi dans un
@@ -100,7 +100,7 @@ export function HeroSection() {
       {/* Background images */}
       <FadeInImage
         delay={0.2}
-        className="absolute -top-5 sm:top-10 -left-5 sm:left-0 -z-9 w-full h-full"
+        className="absolute top-5 sm:top-10 -left-5 sm:left-0 -z-9 w-full h-full"
       >
         <Image
           src="/shapes-small.svg"

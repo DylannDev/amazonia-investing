@@ -7,6 +7,7 @@ interface InfoCardProps {
   className?: string;
   priority?: boolean;
   fetchPriority?: "high" | "low" | "auto";
+  loading?: "lazy" | "eager" | undefined;
 }
 
 const InfoCard: React.FC<InfoCardProps> = ({
@@ -14,6 +15,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
   className = "bottom-16 -left-19",
   priority = true,
   fetchPriority = "high",
+  loading,
 }) => {
   return (
     <FloatingCard
@@ -28,6 +30,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
           className="object-contain"
           priority={priority}
           fetchPriority={fetchPriority}
+          loading={loading || "lazy"}
         />
       </div>
     </FloatingCard>

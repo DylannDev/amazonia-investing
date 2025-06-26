@@ -40,7 +40,7 @@ export function PainCard({ icon, title, description, color }: PainCardProps) {
         </div>
         <div className="flex flex-col justify-between gap-2 h-full">
           <Typography
-            as="h4"
+            as="h3"
             variant="2xl"
             weight="medium"
             className="text-center flex-1 xl:min-h-[110px] 2xl:min-h-auto"

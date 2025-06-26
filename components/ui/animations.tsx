@@ -37,7 +37,7 @@ export default function FadeInText({
         opacity: 1,
         y: 0,
         transition: {
-          duration: 0.6,
+          duration: 0.3,
         },
       },
     };
@@ -47,10 +47,6 @@ export default function FadeInText({
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{
-          once: true,
-          margin: isMargin ? "-50px 0px -50px 0px" : "0px",
-        }}
         className={cn(className)}
       >
         {children.map((child, index) => (
@@ -67,12 +63,8 @@ export default function FadeInText({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{
-        once: true,
-        margin: "-50px 0px -50px 0px",
-      }}
       transition={{
-        duration: 0.6,
+        duration: 0.3,
         delay,
       }}
       className={cn(className)}
@@ -113,12 +105,8 @@ export function FadeInImage({
     <motion.div
       initial={getInitialPosition()}
       whileInView={getAnimatePosition()}
-      viewport={{
-        once: true,
-        margin: "-50px 0px -50px 0px",
-      }}
       transition={{
-        duration: 0.6,
+        duration: 0.3,
         delay,
       }}
       className={cn(className)}
@@ -160,10 +148,6 @@ export function StaggeredGrid({
             key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{
-              once: true,
-              margin: "-50px 0px -50px 0px",
-            }}
             transition={{
               duration: 0.3,
               delay: delay + index * stagger,
@@ -202,12 +186,8 @@ export function StaggeredCards({
           key={index}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{
-            once: true,
-            margin: "-50px 0px -50px 0px",
-          }}
           transition={{
-            duration: 0.5,
+            duration: 0.3,
             delay: delay + index * stagger,
           }}
         >

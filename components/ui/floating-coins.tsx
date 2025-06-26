@@ -27,6 +27,7 @@ export function FloatingCoins({
         sizes="100%"
         className="object-contain"
         priority
+        fetchPriority="high"
       />
     </motion.div>
   );

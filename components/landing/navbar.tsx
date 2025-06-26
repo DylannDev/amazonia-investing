@@ -92,6 +92,9 @@ export function Navbar() {
               ) : (
                 <PiList className="text-2xl text-blue-300" />
               )}
+              <span className="sr-only">
+                {isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              </span>
             </button>
           </nav>
         </Container>
