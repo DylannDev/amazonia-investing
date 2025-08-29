@@ -1,5 +1,27 @@
 import { prisma } from "@/lib/prisma";
 
+interface MainContractLight {
+  investedAmount?: unknown;
+  yieldRate?: unknown;
+  frequency?: string;
+  amountAlreadyPaid?: unknown;
+  createdAt: Date;
+}
+
+interface ClientWithMainContractLight {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  birthDate: Date | null;
+  address?: string | null;
+  city?: string | null;
+  zipCode?: string | null;
+  country?: string | null;
+  contract: MainContractLight[];
+}
+
 export interface ClientRow {
   id: string;
   firstName: string;
@@ -30,11 +52,15 @@ export async function getClientsWithMainContract(): Promise<ClientRow[]> {
     orderBy: { createdAt: "desc" },
   });
 
-  return clients.map((c) => {
+  return (clients as ClientWithMainContractLight[]).map((c) => {
     const main = c.contract[0];
     const investedAmount = main ? Number(main.investedAmount) : null;
     const yieldRate = main ? Number(main.yieldRate) : null; // keep percentage value
-    const frequency = main ? (main.frequency as "weekly" | "monthly") : null;
+    const frequency = main
+      ? main.frequency === "weekly" || main.frequency === "monthly"
+        ? main.frequency
+        : null
+      : null;
     const amountAlreadyPaid = main ? Number(main.amountAlreadyPaid) : null;
     const contractStartDate = main ? main.createdAt : null;
 
