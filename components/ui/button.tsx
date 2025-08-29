@@ -18,6 +18,7 @@ const buttonVariants = cva(
         black: "bg-black text-white shadow-lg shadow-black/20 hover:shadow-xl",
         outline:
           "bg-transparent text-black border-2 border-black shadow-lg hover:shadow-xl",
+        outline_2: "bg-transparent text-black border border-black shadow-xs",
       },
       size: {
         sm: "h-12 px-6 text-base",

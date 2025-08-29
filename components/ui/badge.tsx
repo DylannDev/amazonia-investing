@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 interface BadgeProps {
   children: React.ReactNode;
   className?: string;
-  variant?: "blue" | "green" | "red";
+  variant?: "blue" | "green" | "red" | "yellow";
   isBgVisible?: boolean;
   isBlogCard?: boolean;
 }
@@ -15,12 +15,14 @@ const variantStyles = {
   blue: "text-blue-300",
   green: "text-green-300",
   red: "text-red-300",
+  yellow: "text-yellow-300",
 };
 
 const bgStyles = {
   blue: "bg-blue-100",
   green: "bg-green-100",
   red: "bg-red-100",
+  yellow: "bg-yellow-100",
 };
 
 export function Badge({
@@ -41,7 +43,6 @@ export function Badge({
           isBgVisible && "px-3 py-[6px] rounded-md",
           isBgVisible && bgStyles[variant],
           isBlogCard ? "text-sm" : "text-sm sm:text-base",
-
           className
         )}
       >
