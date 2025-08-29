@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import type { Prisma } from "@prisma/client";
 
 interface PaymentLight {
   id: string;
@@ -16,7 +17,11 @@ interface PaymentLight {
 export async function getPaymentsByContractId(
   contractId: string
 ): Promise<PaymentLight[]> {
-  const rows = await prisma.payment.findMany({
+  type PaymentWithContract = Prisma.PaymentGetPayload<{
+    include: { contract: true };
+  }>;
+
+  const rows: PaymentWithContract[] = await prisma.payment.findMany({
     where: { contractId },
     include: {
       contract: true,
@@ -24,7 +29,7 @@ export async function getPaymentsByContractId(
     orderBy: { createdAt: "desc" },
   });
 
-  return rows.map((p) => ({
+  return rows.map((p: PaymentWithContract) => ({
     id: p.id,
     contractId: p.contractId,
     weekNumber: p.weekNumber,
