@@ -210,3 +210,32 @@
 
   @apply text-base sm:text-lg text-gray-600 leading-relaxed font-normal;
 }
+
+.toast {
+  @apply !shadow-sm;
+}
+
+/* Custom scrollbar - blue thumb, transparent track */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-blue-200) transparent;
+}
+
+/* WebKit */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-blue-200);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-blue-300);
+}

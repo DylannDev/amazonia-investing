@@ -13,7 +13,7 @@ export async function generateMetadata() {
 
 export default async function CGUPage() {
   // Lire le fichier markdown
-  const filePath = join(process.cwd(), "app/cgu/cgu.md");
+  const filePath = join(process.cwd(), "app/(app)/cgu/cgu.md");
   const markdownContent = readFileSync(filePath, "utf-8");
 
   return (

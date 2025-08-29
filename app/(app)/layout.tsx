@@ -1,22 +1,15 @@
 import type { Metadata } from "next";
-import { Outfit, Urbanist } from "next/font/google";
+import { Outfit } from "next/font/google";
 import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
 import { WhatsappStickyButton } from "@/components/ui/whatsapp-sticky-button";
-import "./globals.css";
+import "../globals.css";
 
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
-});
-
-const urbanist = Urbanist({
-  subsets: ["latin"],
-  variable: "--font-urbanist",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
