@@ -1,5 +1,16 @@
 import { prisma } from "@/lib/prisma";
 
+interface ContractLight {
+  id: string;
+  client: { firstName: string; lastName: string };
+  investedAmount?: unknown;
+  yieldRate?: unknown;
+  amountToPay?: unknown;
+  amountAlreadyPaid?: unknown;
+  frequency: string;
+  payment: { status: string }[];
+}
+
 export interface ContractAggregateRow {
   contractId: string;
   clientName: string;
@@ -44,36 +55,41 @@ export async function getContractsWithAggregates(): Promise<ContractsSummary> {
     orderBy: { createdAt: "desc" },
   });
 
-  const rows: ContractAggregateRow[] = contracts.map((c) => {
-    const investedAmount = toNumber(c.investedAmount);
-    const yieldRate = toNumber(c.yieldRate) / 100; // DB stores percentage, convert to fraction (e.g., 10 -> 0.10)
-    const amountToPay = toNumber(c.amountToPay);
-    const amountAlreadyPaid = toNumber(c.amountAlreadyPaid);
-    const frequency = c.frequency as "weekly" | "monthly";
+  const rows: ContractAggregateRow[] = (contracts as ContractLight[]).map(
+    (c) => {
+      const investedAmount = toNumber(c.investedAmount);
+      const yieldRate = toNumber(c.yieldRate) / 100; // DB stores percentage, convert to fraction (e.g., 10 -> 0.10)
+      const amountToPay = toNumber(c.amountToPay);
+      const amountAlreadyPaid = toNumber(c.amountAlreadyPaid);
+      const frequency =
+        c.frequency === "weekly" || c.frequency === "monthly"
+          ? c.frequency
+          : "monthly";
 
-    const totalPaidSoFar = c.payment
-      .filter((p) => p.status === "paid")
-      .reduce((sum) => sum + amountToPay, 0); // each paid payment counts the contract amountToPay
+      const totalPaidSoFar = c.payment
+        .filter((p) => p.status === "paid")
+        .reduce((sum) => sum + amountToPay, 0); // each paid payment counts the contract amountToPay
 
-    const alreadyReceived = amountAlreadyPaid + totalPaidSoFar;
-    const remainingToROI = Math.max(0, investedAmount - alreadyReceived);
-    const monthlyExpected =
-      frequency === "monthly" ? amountToPay : amountToPay * 4;
-    const roiRemainingMonths =
-      monthlyExpected > 0 ? Math.ceil(remainingToROI / monthlyExpected) : 0;
+      const alreadyReceived = amountAlreadyPaid + totalPaidSoFar;
+      const remainingToROI = Math.max(0, investedAmount - alreadyReceived);
+      const monthlyExpected =
+        frequency === "monthly" ? amountToPay : amountToPay * 4;
+      const roiRemainingMonths =
+        monthlyExpected > 0 ? Math.ceil(remainingToROI / monthlyExpected) : 0;
 
-    return {
-      contractId: c.id,
-      clientName: `${c.client.firstName} ${c.client.lastName}`.trim(),
-      investedAmount,
-      yieldRate,
-      frequency,
-      amountToPay,
-      amountAlreadyPaid,
-      totalPaidSoFar,
-      roiRemainingMonths,
-    };
-  });
+      return {
+        contractId: c.id,
+        clientName: `${c.client.firstName} ${c.client.lastName}`.trim(),
+        investedAmount,
+        yieldRate,
+        frequency,
+        amountToPay,
+        amountAlreadyPaid,
+        totalPaidSoFar,
+        roiRemainingMonths,
+      };
+    }
+  );
 
   // Sort by clientName asc for a consistent UI
   rows.sort((a, b) => a.clientName.localeCompare(b.clientName, "fr"));
