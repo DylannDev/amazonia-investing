@@ -15,7 +15,7 @@ export default async function MentionsLegalesPage() {
   // Lire le fichier markdown
   const filePath = join(
     process.cwd(),
-    "app/mentions-legales/mentions-legales.md"
+    "app/(app)/mentions-legales/mentions-legales.md"
   );
   const markdownContent = readFileSync(filePath, "utf-8");
 

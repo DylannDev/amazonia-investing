@@ -1,0 +1,134 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Modèle Client - représente un investisseur
+model Client {
+  id          String      @id @default(uuid())
+  firstName   String      // Prénom du client
+  lastName    String      // Nom du client
+  email       String      @unique // Email unique du client
+  phone       String      // Numéro de téléphone
+  birthDate   DateTime    // Date de naissance
+  address     String?      // Adresse du client
+  city        String?      // Ville du client
+  zipCode     String?      // Code postal du client
+  country     String?      // Pays du client
+  createdAt   DateTime    @default(now()) // Date de création du client
+
+  // Relations
+  contract   Contract[] // Un client peut avoir plusieurs contrats
+
+  @@map("clients")
+}
+
+// Modèle Contract - représente un contrat d'investissement
+model Contract {
+  id            String       @id @default(uuid())
+  clientId      String       // ID du client propriétaire du contrat
+  investedAmount Decimal     @db.Decimal(10, 2) // Montant investi en euros
+  yieldRate     Decimal      @db.Decimal(5, 2) // Rendement en pourcentage (ex: 10.50)
+  amountToPay   Decimal      @db.Decimal(10, 2) // Montant fixe à verser (calculé lors de la création du contrat)
+  amountAlreadyPaid Decimal @default(0.00) @db.Decimal(10, 2) // Montant déjà perçu par le client AVANT l'intégration du contrat dans la plateforme
+  frequency     String       // Fréquence des paiements: "weekly" ou "monthly"
+  createdAt     DateTime     @default(now()) // Date de création du contrat
+
+
+  // Relations
+  client        Client      @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  payment      Payment[]   // Un contrat peut avoir plusieurs paiements
+
+  @@map("contracts")
+}
+
+// Modèle Payment - représente un paiement de rendement
+model Payment {
+  id            String      @id @default(uuid())
+  contractId    String      // ID du contrat associé
+  weekNumber    Int         // Numéro de semaine (1-52)
+  month         Int         // Mois (1-12)
+  year          Int         // Année
+  status        String      // Statut: "pending" ou "paid"
+  paidAt        DateTime?   // Date de paiement effectif (null si pas encore payé)
+  createdAt     DateTime    @default(now()) // Date de création du paiement
+
+  // Relations
+  contract      Contract   @relation(fields: [contractId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  role         Role     @default(ADMIN)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  sessions      Session[]
+  accounts      Account[]
+  @@map("user")
+}
+
+enum Role {
+  ADMIN
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  expiresAt DateTime
+  token     String
+  createdAt DateTime
+  updatedAt DateTime
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id @default(uuid())
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime
+  updatedAt             DateTime
+
+  @@unique([providerId, accountId])
+  @@map("account")
+}
+
+model Verification {
+  id         String    @id @default(uuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime?
+  updatedAt  DateTime?
+
+  @@map("verification")
+}

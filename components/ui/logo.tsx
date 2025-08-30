@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface LogoProps {
   className?: string;
-  variant?: "default" | "white";
+  variant?: "default" | "white" | "illustration";
   isFooter?: boolean;
 }
 
@@ -13,17 +13,33 @@ export function Logo({
   variant = "default",
   isFooter = false,
 }: LogoProps) {
+  const getLogoSrc = () => {
+    switch (variant) {
+      case "white":
+        return "/logo-white.svg";
+      case "illustration":
+        return "/logo-illustration.svg";
+      case "default":
+      default:
+        return "/logo.svg";
+    }
+  };
+
   return (
     <Link
       href="/"
       className={cn(
         "relative block aspect-[5/1]",
-        isFooter ? "w-[250px] sm:w-[300px]" : "w-[220px] sm:w-[300px]",
+        isFooter
+          ? "w-[250px] sm:w-[300px]"
+          : variant === "illustration"
+          ? "w-auto"
+          : "w-[220px] sm:w-[300px]",
         className
       )}
     >
       <Image
-        src={variant === "white" ? "/logo-white.svg" : "/logo.svg"}
+        src={getLogoSrc()}
         alt="Amazonia Investing logo"
         fill
         priority
