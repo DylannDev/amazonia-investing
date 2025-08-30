@@ -19,6 +19,7 @@ interface ClientWithMainContractLight {
   city?: string | null;
   zipCode?: string | null;
   country?: string | null;
+  createdAt: Date;
   contract: MainContractLight[];
 }
 
@@ -39,6 +40,7 @@ export interface ClientRow {
   frequency?: "weekly" | "monthly" | null;
   amountAlreadyPaid?: number | null;
   contractStartDate?: Date | null;
+  createdAt: Date;
 }
 
 export async function getClientsWithMainContract(): Promise<ClientRow[]> {
@@ -81,6 +83,7 @@ export async function getClientsWithMainContract(): Promise<ClientRow[]> {
       frequency,
       amountAlreadyPaid,
       contractStartDate,
+      createdAt: c.createdAt,
     };
   });
 }

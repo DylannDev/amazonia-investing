@@ -33,6 +33,7 @@ export interface ClientRow {
   frequency?: "weekly" | "monthly" | null;
   amountAlreadyPaid?: number | null;
   contractStartDate?: Date | null;
+  createdAt: Date;
 }
 
 interface ClientsTableProps {
@@ -88,10 +89,17 @@ function ClientsTable({ data }: ClientsTableProps) {
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
-    if (!q) return data;
-    return data.filter((r) =>
-      [r.fullName, r.email].some((v) => (v || "").toLowerCase().includes(q))
-    );
+    const list = !q
+      ? data
+      : data.filter((r) =>
+          [r.fullName, r.email].some((v) => (v || "").toLowerCase().includes(q))
+        );
+    return [...list].sort((a, b) => {
+      const da = new Date(a.createdAt).getTime();
+      const db = new Date(b.createdAt).getTime();
+      if (db !== da) return db - da;
+      return a.id.localeCompare(b.id);
+    });
   }, [data, search]);
 
   return (
