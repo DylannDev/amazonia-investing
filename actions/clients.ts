@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/prisma";
 import { getUserFriendlyError } from "@/lib/errors";
 import { revalidatePath } from "next/cache";
+import { calculatePaymentAmount } from "@/lib/seed-payments";
 
 export interface CreateClientWithContractInput {
   // Client
@@ -42,7 +43,11 @@ export async function createClientWithContract(
           create: {
             investedAmount: data.investedAmount,
             yieldRate: data.yieldRate,
-            amountToPay: (data.investedAmount * data.yieldRate) / 100,
+            amountToPay: calculatePaymentAmount(
+              data.investedAmount,
+              data.yieldRate,
+              data.frequency
+            ),
             amountAlreadyPaid: data.amountAlreadyPaid || 0,
             frequency: data.frequency,
             createdAt: data.contractStartDate,
@@ -101,7 +106,11 @@ export async function updateClient(data: UpdateClientInput) {
       orderBy: { createdAt: "desc" },
     });
 
-    const amountToPay = (data.investedAmount * data.yieldRate) / 100;
+    const amountToPay = calculatePaymentAmount(
+      data.investedAmount,
+      data.yieldRate,
+      data.frequency
+    );
 
     if (latest) {
       await prisma.contract.update({
