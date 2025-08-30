@@ -86,9 +86,6 @@ importers:
       postcode-validator:
         specifier: ^3.10.5
         version: 3.10.5
-      prisma:
-        specifier: ^6.13.0
-        version: 6.13.0(typescript@5.8.3)
       react:
         specifier: ^19.0.0
         version: 19.1.0
@@ -138,6 +135,9 @@ importers:
       '@types/react-dom':
         specifier: ^19
         version: 19.1.6(@types/react@19.1.6)
+      prisma:
+        specifier: ^6.13.0
+        version: 6.13.0(typescript@5.8.3)
       tailwindcss:
         specifier: ^4
         version: 4.1.8
