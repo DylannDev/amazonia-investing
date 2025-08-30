@@ -1,6 +1,32 @@
 import { Payment, Contract } from "@/types/prisma";
 import { prisma } from "@/lib/prisma";
 
+interface PaymentWithContractLight {
+  id: string;
+  contractId: string;
+  weekNumber: number;
+  month: number;
+  year: number;
+  status: string;
+  contract: {
+    investedAmount?: unknown;
+    yieldRate?: unknown;
+    frequency: string;
+    amountToPay?: unknown;
+    client: { firstName: string; lastName: string };
+  };
+}
+
+interface ContractWithClientLight {
+  id: string;
+  createdAt: Date;
+  investedAmount?: unknown;
+  yieldRate?: unknown;
+  frequency: string;
+  amountToPay?: unknown;
+  client: { firstName: string; lastName: string };
+}
+
 export async function getPaymentsData(): Promise<Payment[]> {
   try {
     const payments = await prisma.payment.findMany({
@@ -18,18 +44,25 @@ export async function getPaymentsData(): Promise<Payment[]> {
       },
     });
 
-    return payments.map((payment) => ({
+    return (payments as PaymentWithContractLight[]).map((payment) => ({
       id: payment.id,
       contractId: payment.contractId,
       clientName: `${payment.contract.client.firstName} ${payment.contract.client.lastName}`,
       investedAmount: Number(payment.contract.investedAmount),
       yieldRate: Number(payment.contract.yieldRate) / 100, // Conversion du pourcentage
-      frequency: payment.contract.frequency as "weekly" | "monthly",
+      frequency:
+        payment.contract.frequency === "weekly" ||
+        payment.contract.frequency === "monthly"
+          ? payment.contract.frequency
+          : "monthly",
       amountToPay: Number(payment.contract.amountToPay),
       weekNumber: payment.weekNumber,
       month: payment.month,
       year: payment.year,
-      status: payment.status as "pending" | "paid" | "late",
+      status:
+        payment.status === "pending" || payment.status === "paid"
+          ? payment.status
+          : "pending",
     }));
   } catch (error) {
     console.error(
@@ -48,13 +81,16 @@ export async function getContractsData(): Promise<Contract[]> {
       },
     });
 
-    return contracts.map((contract) => ({
+    return (contracts as ContractWithClientLight[]).map((contract) => ({
       id: contract.id,
       createdAt: contract.createdAt,
       clientName: `${contract.client.firstName} ${contract.client.lastName}`,
       investedAmount: Number(contract.investedAmount),
       yieldRate: Number(contract.yieldRate) / 100, // Conversion du pourcentage
-      frequency: contract.frequency as "weekly" | "monthly",
+      frequency:
+        contract.frequency === "weekly" || contract.frequency === "monthly"
+          ? contract.frequency
+          : "monthly",
       amountToPay: Number(contract.amountToPay),
       status: "pending",
     }));
