@@ -59,37 +59,21 @@ export default function AddClientForm({ onCancel }: AddClientFormProps) {
   const form = useForm<FormValues>({
     resolver: zodResolver(addClientSchema),
     defaultValues: {
-      firstName: "Dylann",
-      lastName: "Xavero",
-      email: "d.xavero@gmail.com",
-      phone: "0606848484",
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
       birthDate: undefined as unknown as Date,
-      address: "1189 avenue de la république",
-      city: "Cayenne",
-      zipCode: "97300",
-      country: "GF",
-      investedAmount: 500,
-      yieldRate: 10,
-      amountAlreadyPaid: 2500,
-      frequency: "monthly",
+      address: "",
+      city: "",
+      zipCode: "",
+      country: undefined,
+      investedAmount: "" as unknown as any,
+      yieldRate: "" as unknown as any,
+      amountAlreadyPaid: "" as unknown as any,
+      frequency: "weekly",
       contractStartDate: undefined as unknown as Date,
     },
-    // defaultValues: {
-    //   firstName: "",
-    //   lastName: "",
-    //   email: "",
-    //   phone: "",
-    //   birthDate: undefined as unknown as Date,
-    //   address: "",
-    //   city: "",
-    //   zipCode: "",
-    //   country: undefined,
-    //   investedAmount: 0 as unknown as any,
-    //   yieldRate: 0 as unknown as any,
-    //   amountAlreadyPaid: 0 as unknown as any,
-    //   frequency: "weekly",
-    //   contractStartDate: undefined as unknown as Date,
-    // },
   });
 
   async function onSubmit(values: FormValues) {
@@ -358,7 +342,7 @@ export default function AddClientForm({ onCancel }: AddClientFormProps) {
                       <Input
                         type="number"
                         inputMode="decimal"
-                        step="0.01"
+                        step="0.1"
                         placeholder="0"
                         {...field}
                         onChange={(e) =>
@@ -390,7 +374,9 @@ export default function AddClientForm({ onCancel }: AddClientFormProps) {
                       <Input
                         type="number"
                         inputMode="decimal"
-                        step="0.01"
+                        step="0.1"
+                        min="0"
+                        max="100"
                         placeholder="0"
                         {...field}
                         onChange={(e) =>
@@ -422,7 +408,7 @@ export default function AddClientForm({ onCancel }: AddClientFormProps) {
                       <Input
                         type="number"
                         inputMode="decimal"
-                        step="0.01"
+                        step="0.1"
                         placeholder="0"
                         {...field}
                         onChange={(e) =>

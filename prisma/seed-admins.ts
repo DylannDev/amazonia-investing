@@ -11,14 +11,19 @@ async function main() {
       password: process.env.ADMIN1_PASSWORD || "Admin$2025!",
     },
     {
-      email: "lory@amazonia-investing.com",
+      email: "loryothily@yahoo.fr",
       name: "Lory",
       password: process.env.ADMIN2_PASSWORD || "Admin$2025!",
     },
     {
-      email: "christopher@amazonia-investing.com",
+      email: "tcofficiel.guyane@gmail.com",
       name: "Christopher",
       password: process.env.ADMIN3_PASSWORD || "Admin$2025!",
+    },
+    {
+      email: "louis.jonathan@hotmail.fr",
+      name: "Louis",
+      password: process.env.ADMIN4_PASSWORD || "Admin$2025!",
     },
   ];
 
