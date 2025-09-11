@@ -91,7 +91,7 @@ function PaymentsTable({ payments, contracts }: PaymentsTableProps) {
           paiements.
         </div>
       ) : (
-        <div className="max-h-[56vh] overflow-y-auto border-b border-gray-200 pb-10">
+        <div className="max-h-[calc(100dvh-430px)] overflow-y-auto border-b border-gray-200 pb-10">
           <Table className="w-full overflow-hidden">
             <TableHeader>
               <TableRow>

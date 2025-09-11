@@ -120,7 +120,7 @@ function ClientsTable({ data }: ClientsTableProps) {
         </div>
       </div>
 
-      <div className="max-h-[calc(100dvh-220px)] md:max-h-[calc(100dvh-200px)] overflow-y-auto relative border-b border-gray-200 pb-10">
+      <div className="max-h-[calc(100dvh-260px)] overflow-y-auto relative border-b border-gray-200 pb-10">
         <Table className="w-full">
           <TableHeader>
             <TableRow>
