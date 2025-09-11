@@ -82,7 +82,7 @@ export default function ContractsTable({ rowsData }: ContractsTableProps) {
           className="w-64"
         />
       </div>
-      <div className="max-h-[68vh] overflow-y-auto border-b border-gray-200 pb-10">
+      <div className="max-h-[calc(100dvh-300px)] overflow-y-auto border-b border-gray-200 pb-10">
         <Table className="w-full overflow-hidden">
           <TableHeader>
             <TableRow>
