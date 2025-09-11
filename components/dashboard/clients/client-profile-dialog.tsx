@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/dashboard/button";
 import { Separator } from "@/components/ui/separator";
-import { getCountryDisplayName } from "@/lib/utils";
+import { getCountryDisplayName, capitalizeWords } from "@/lib/utils";
 
 export interface ClientProfileDialogProps {
   open: boolean;
@@ -49,7 +49,9 @@ export function ClientProfileDialog({
   onOpenChange,
   client,
 }: ClientProfileDialogProps) {
-  const fullName = `${client.firstName} ${client.lastName}`.trim();
+  const fullName = capitalizeWords(
+    `${client.firstName} ${client.lastName}`.trim()
+  );
   const freqLabel = client.frequency
     ? client.frequency === "weekly"
       ? "Hebdomadaire"
@@ -95,10 +97,12 @@ export function ClientProfileDialog({
                   client.country,
                 ].some((v) => Boolean(v)) ? (
                   <div className="space-y-0.5">
-                    {client.address ? <div>{client.address}</div> : null}
+                    {client.address ? (
+                      <div>{capitalizeWords(client.address)}</div>
+                    ) : null}
                     {client.zipCode || client.city ? (
                       <div>
-                        {[client.zipCode, client.city]
+                        {[client.zipCode, capitalizeWords(client.city)]
                           .filter(Boolean)
                           .join(" ")}
                       </div>

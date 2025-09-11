@@ -174,3 +174,25 @@ export function getCountryDisplayName(value?: string | null): string | null {
   }
   return trimmed;
 }
+
+// Met en Capitalize chaque mot (gère espaces, tirets et apostrophes)
+export function capitalizeWords(input?: string | null): string {
+  if (!input) return "";
+  const lower = input.trim().toLowerCase();
+  if (!lower) return "";
+
+  function capitalizeToken(token: string): string {
+    return token
+      .split("'")
+      .map((part) =>
+        part ? part.charAt(0).toUpperCase() + part.slice(1) : part
+      )
+      .join("'");
+  }
+
+  // Conserver les séparateurs (espaces/tirets) et capitaliser les autres segments
+  const segments = lower.split(/([\s-]+)/);
+  return segments
+    .map((seg) => (/^[\s-]+$/.test(seg) ? seg : capitalizeToken(seg)))
+    .join("");
+}

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { TableCell, TableRow } from "@/components/dashboard/table";
-import { formatCurrency } from "@/lib/utils";
+import { formatCurrency, capitalizeWords } from "@/lib/utils";
 import { MoreHorizontal, Pencil, Trash2 } from "lucide-react";
 import {
   DropdownMenu,
@@ -52,7 +52,7 @@ export function ClientsTableRow({
     >
       {visibleColumns.includes("Nom Prénom") && (
         <TableCell isFirst={true} className="whitespace-nowrap">
-          {`${row.firstName} ${row.lastName}`.trim()}
+          {capitalizeWords(`${row.firstName} ${row.lastName}`.trim())}
         </TableCell>
       )}
       {visibleColumns.includes("Email") && (
@@ -69,9 +69,9 @@ export function ClientsTableRow({
       {visibleColumns.includes("Adresse") && (
         <TableCell
           className="max-w-[260px] truncate"
-          title={row.address || undefined}
+          title={row.address ? capitalizeWords(row.address) : undefined}
         >
-          {row.address || "—"}
+          {row.address ? capitalizeWords(row.address) : "—"}
         </TableCell>
       )}
       {visibleColumns.includes("Montant investi") && (
