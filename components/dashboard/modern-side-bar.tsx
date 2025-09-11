@@ -92,10 +92,10 @@ export function Sidebar({ className = "" }: SidebarProps) {
       {/* Sidebar */}
       <div
         className={`
-          fixed top-0 left-0 h-full bg-black border-r border-gray-700 z-40 transition-all duration-300 ease-in-out flex flex-col
+          sticky top-0 self-start h-[100dvh] bg-black border-r border-gray-700 z-40 transition-all duration-300 ease-in-out flex flex-col
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
           ${isCollapsed ? "w-36" : "w-[320px]"}
-          translate-x-0 static z-50
+          md:translate-x-0
           ${className}
         `}
       >

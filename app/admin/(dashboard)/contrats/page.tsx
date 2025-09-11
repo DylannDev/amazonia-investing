@@ -8,7 +8,7 @@ export default async function ContractsPage() {
   const { rows, totalInvested, totalPaid, activeContracts } =
     await getContractsWithAggregates();
   return (
-    <div className="container mx-auto w-full flex flex-col overflow-x-auto">
+    <div className="container mx-auto w-full flex flex-col overflow-x-auto py-10">
       <div className="flex justify-between items-start gap-10 mb-10">
         <div className="w-1/3">
           <h1 className="text-2xl font-bold text-black">
