@@ -10,9 +10,9 @@ async function DashboardLayout({ children }: { children: React.ReactNode }) {
   // if ((session as any).user?.role !== "ADMIN") redirect("/admin?error=unauthorized");
 
   return (
-    <div className="flex h-screen w-screen overflow-y-hidden overflow-x-auto">
+    <div className="flex min-h-[100dvh] h-full">
       <Sidebar />
-      <main className="flex-1 px-6 pt-10">{children}</main>
+      <main className="overflow-y-hidden px-6">{children}</main>
     </div>
   );
 }

@@ -6,7 +6,7 @@ export default async function paiementsPage() {
   const contracts = await getContractsData();
 
   return (
-    <div className="container mx-auto w-full flex flex-col gap-10">
+    <div className="container mx-auto w-full flex flex-col gap-10 py-10">
       <div className="">
         <h1 className="text-2xl font-bold text-black">Gestion des paiements</h1>
         <p className="text-gray-600">
