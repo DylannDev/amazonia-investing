@@ -12,7 +12,7 @@ async function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-[100dvh] h-full">
       <Sidebar />
-      <main className="overflow-y-hidden px-6">{children}</main>
+      <main className="w-full overflow-y-hidden px-6">{children}</main>
     </div>
   );
 }
