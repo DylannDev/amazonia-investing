@@ -21,7 +21,7 @@ export function CallButton({
 }: CallButtonProps) {
   return (
     <Link
-      href="https://wa.me/+594694252185?text=Bonjour%20!%20Je%20souhaite%20en%20savoir%20plus%20sur%20Amazonia%20Investing.%20Pouvez-vous%20m'expliquer%20le%20fonctionnement%20?"
+      href="https://wa.me/+594694280529?text=Bonjour%20!%20Je%20souhaite%20en%20savoir%20plus%20sur%20Amazonia%20Investing.%20Pouvez-vous%20m'expliquer%20le%20fonctionnement%20?"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactez-nous sur WhatsApp"

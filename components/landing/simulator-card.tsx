@@ -43,7 +43,7 @@ export function SimulatorCard() {
               value={investment}
               onChange={handleChange}
               placeholder="Ex: 500"
-              className="py-6 pr-12 text-lg placeholder:text-base placeholder:font-normal border-2 border-gray-200 rounded-lg focus:border-blue-300"
+              className="py-6 pr-12 text-lg placeholder:text-base placeholder:font-normal rounded-lg focus:border-blue-300"
             />
             <span className="absolute right-3 top-1/2 -translate-y-1/2">€</span>
           </div>

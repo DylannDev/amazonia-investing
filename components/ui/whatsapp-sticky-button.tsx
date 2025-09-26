@@ -7,7 +7,7 @@ import { Typography } from "./typography";
 export function WhatsappStickyButton() {
   return (
     <Link
-      href="https://wa.me/+594694252185"
+      href="https://wa.me/+594694280529"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactez-nous sur WhatsApp"
